@@ -1,0 +1,14 @@
+{% if legislation %}
+	<div id="bill_navcontainer">
+		<ul id="bill_navlist">
+			<li>
+				<a href="{% url legislation_detail legislation.slug %}" id="bill_navcontainer_current">{{ legislation }}</a>
+			</li>	
+			{% for title in legislation.titles.all %}
+			<li>
+				<a href="{% url title_detail legislation.slug,title.number %}"><span class="title">TITLE {{ title.roman_number }}</span><br />{{ title.name }}</a>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endif %}

@@ -1,0 +1,37 @@
+{% if display_form %}
+
+	<form action="/comments/postfree/" method="post" id="free_comment_form">
+		<input type="hidden" name="preview" value="true" />
+		<input type="hidden" name="options" value="{{ options }}" />
+		<input type="hidden" name="target" value="{{ target }}" />
+		<input type="hidden" name="gonzo" value="{{ hash }}" />
+		<p class="field_headers">Your Name (and Organization*):</p>
+		<input name="person_name" id="free_comment_form_name" size="40" />
+		<p class="field_headers">Your Comment: <span class="comment_disclaimer_leg">(HTML is not permitted, but links will be automatically linked)</span></p>
+		<textarea cols="70" rows="10" name="comment"></textarea>
+		<div id="small_disclaimer">*We encourage you to take credit for your comments by including your name and organization.</div>
+		<p>
+
+
+			<div class="buttons">
+				<a href="#" class="new" id="free_comment_form_submit">
+					Preview Your Comment
+				</a>
+			</div>
+			
+
+		</p>
+	</form>
+	<script type="text/javascript" charset="utf-8">
+		Sunlight.Application.addLoadEvent(function() {
+			$('free_comment_form_submit').onclick = function() {
+				var name = $('free_comment_form_name');
+				if (!name.value || name.value == "") {
+					name.value = "Anonymous";
+				}
+				$('free_comment_form').submit();
+				return false;
+			}
+		});
+	</script>
+{% endif %}

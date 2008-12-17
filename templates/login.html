@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block content %}
+	<div id="doc4" class="yui-t7">
+		{% include "header.html" %}
+		<div id="bd">
+			<div class="yui-g">
+				<div id="preview_container">
+					<div id="preview_container_top">
+						<h2>What's the magic word?</h2>
+					</div>
+					<div id="preview_content">
+						<form action="." method="post">
+							<input type="hidden" name="next" value="/" />
+							<input type="hidden" name="username" value="guest" />
+								<div style="padding:10px"><span class="error">{% if form.password.errors %}<span class="error">{{form.password.errors}}</span>{% endif %}</span></div>
+			 					{{form.password}}
+								<input type="submit" value="Go" />
+							</form>
+					</div>
+				</div>
+			</div>
+			{% include "footer.html" %}
+		</div>
+{% endblock %}

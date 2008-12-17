@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block meta %}
+<meta http-equiv="refresh" content="0;{{ object.get_absolute_url }}#latest-comment"/>
+{% endblock %}
+
+{% block content %}
+<div id="doc4" class="yui-t7">
+		{% include "header.html" %}
+<div id="bd">
+
+<div class="yui-g">
+<div id="preview_container">
+<div id="preview_container_top">
+<h2>Comment posted successfully!</h2></div>
+<div id="preview_content">
+
+{% if object %}
+<h4>Hold on... We're taking you to comment.</h4>
+<p>Are you patient enough to wait for <a href="{{ object.get_absolute_url }}#latest-comment">the page</a>?</p>
+{% endif %}
+
+</div>
+</div>
+</div>
+
+
+{% include "footer.html" %}
+	</div>
+{% endblock %}

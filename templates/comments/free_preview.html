@@ -1,0 +1,123 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div id="doc4" class="yui-t7">
+		{% include "header.html" %}
+<div id="bd">
+
+<div class="yui-g">
+
+<div id="preview_container">
+<div id="preview_container_top">
+<h2>Please review your comment before posting. <span class="small">(or you may edit the comment, below)</span></h2></div>
+<div id="preview_content">
+
+<form action="/comments/postfree/" method="post" id="free_comment_form">
+	<input type="hidden" name="" value="true" id="post_type" />
+	{% if comment_form.has_errors %}
+	    <p><strong style="color: red;">Please correct the following errors.</strong></p>
+	{% else %}
+	    	<div class="comment" id="previewed_comment">
+	    {{ comment.comment|escape|urlizetrunc:"40"|linebreaks }}
+	    <p class="comment_attrib">Posted by <strong>{{ comment.person_name|escape }}</strong></p>
+		 	</div>
+
+	<div id="recaptcha_container">
+	   <h2>You're almost finished!</h2><p>In an effort to prevent spam, we're using re-captcha.  
+	   Simply type the two words you see to confirm that you are indeed a human.<br /> <small>
+	   (If for some reason you do not see a red box below with space for 2 words to be typed, the "captcha" hasn't loaded. Click your browser's back button and attempt to preview your comment again.)
+	   </small>
+	   </p>
+
+		{% autoescape off %}{{ recaptcha_html }}{% endautoescape %}</div>
+	
+	<div class="buttons" style="margin-left:1em; margin-top:2em;">
+				<a href="#" class="new" id="free_comment_form_submit">
+					Post Your Comment
+				</a>
+			</div>
+	
+	</div>
+
+<!-- <input type="submit" name="post" value="Post public comment" class="preview_button" /> -->
+
+
+<br />
+</div> <!-- end preview content -->
+
+	    
+	{% endif %}
+
+
+	<div id="preview_comment_box">
+	
+<div id="edit_comment_box"><h2>Care to edit your comment before posting?</h2>
+	<a name="edit_comment"></a>
+	
+
+	<p class="field_headers">
+		<label for="id_person_name">Your name (and Organization):</label>
+		{% if comment_form.person_name.errors %}{{ comment_form.person_name.html_error_list }}{% endif %}
+	</p>
+	{{ comment_form.person_name }}
+	<br />
+	{% if comment_form.comment.errors %}
+		{{ comment_form.comment.html_error_list }}
+	{% endif %}
+
+	
+		<p class="field_headers"><label for="id_comment">Comment:</label>
+		</p>
+		{{ comment_form.comment }}
+<br />
+	
+	<input type="hidden" name="options" value="{{ options }}" />
+	<input type="hidden" name="target" value="{{ target }}" />
+	<input type="hidden" name="gonzo" value="{{ hash }}" />
+
+
+		<!-- 	<p><input type="submit" name="preview" value="Preview revised comment" />	</p>-->
+		
+	<div class="buttons" style="margin-top:2em;">
+		<a href="#" class="new" id="free_comment_form_preview">
+			Preview Revised Comment
+		</a>
+	</div>
+	
+</form>
+<script type="text/javascript" charset="utf-8">
+	Sunlight.Application.addLoadEvent(function() {
+		if ($('free_comment_form_submit')) {
+			$('free_comment_form_submit').onclick = function() {
+				$('post_type').name = 'post';
+				$('free_comment_form').submit();
+				return false;
+			};
+		}
+		if ($('free_comment_form_preview')) {
+			$('free_comment_form_preview').onclick = function() {			
+				var name = $('id_person_name');
+				if (!name.value || name.value == "") {
+					name.value = "Anonymous";
+				}
+				$('post_type').name = 'preview';
+				$('free_comment_form').submit();
+				return false;
+			}
+		};
+	});
+</script>
+
+
+</div>		
+	</div>    
+
+</div> <!-- end preview_container -->
+
+</div> <!-- end YUI g -->
+
+
+{% include "footer.html" %}
+	</div>
+
+{% endblock %}

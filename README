@@ -1,0 +1,23 @@
+depends on
+- Django trunk revision 7739
+- recaptcha-client
+- roman numeral example used in Dive Into Python
+http://diveintopython.org/download/diveintopython-examples-5.4.zip
+
+Special settings in settings.py:
+
+INSTALLED_APPS = (
+    ...
+    'django.contrib.flatpages',
+    'django.contrib.markup',
+    'django.contrib.comments',
+    'django.contrib.admin',
+    ...
+)
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_URL = '/logout/'
+
+RECAPTCHA_PUBLIC_KEY = ""
+RECAPTCHA_PRIVATE_KEY = ""

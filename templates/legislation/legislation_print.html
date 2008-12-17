@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>{{ legislation }}</title>
+	<style type="text/css" media="screen, print">
+	    body { font-size: 1em; text-align: center; }
+	    h1 { text-align: center; font-size: 1.3em; font-weight: normal; margin: 3em 0 1em 0; }
+	    h2 { font-size: 1em; font-weight: normal; }
+	    h3 { font-size: 1em; font-weight: normal; }
+	    h4 { font-size: 1em; font-weight: normal; }
+	    h5 { font-size: 1em; font-weight: normal; }
+	    p { line-height: 1.5em; }
+	    ol, ul { list-style: none; margin: 0; padding: 0; }
+	    ol li, ul li { margin: 0; padding: 0; }
+	    ol#table-of-content, ol#content { margin: 3em 0 6em; }
+	    div.legislation { text-align: left; margin: 0 auto; width: 750px; }
+	    li.title h2 { font-weight: bold; }
+	    li.section, li.section-index { margin-left: 2em; }
+	    div.section_text li { margin-left: 6em; }
+		div.section-text ol li { list-style: lower-alpha outside; margin-left: 3em; }
+		div.section-text ol ol li { list-style: decimal outside; }
+		div.section-text ol ol ol li { list-style: upper-alpha outside; }
+		div.section-text ol ol ol ol li { list-style: lower-roman outside; }
+		div.section-text ol ol ol ol ol li { list-style: upper-roman outside; }
+		div.section-text ol.nostyle li { list-style: none; }
+		#participate { text-align: center; margin-bottom: 2em; }
+		#participate p { margin: 0.1em 0; }
+	</style>
+</head>
+<body>
+<div class="legislation">
+    
+    <h1>{{ legislation|upper }}</h1>
+
+    <ol id="table-of-content">
+    {% for title in legislation.titles.all %}
+        <li class="title-index">
+            <h2>{{ title|upper }}</h2>
+            <ol>
+            {% for section in title.sections.all %}
+                <li class="section-index"><h3>{{ section }}</h3></li>
+            {% endfor %}
+            </ol>
+        </li>
+    {% endfor %}
+    </ol>
+
+    <ol id="content">
+    {% for title in legislation.titles.all %}
+        <li class="title">
+            <h2>{{ title|upper }}</h2>
+            <ol>
+            {% for section in title.sections.all %}
+                <li class="section">
+                    <h3>{{ section }}</h3>
+                    <div class="section-text">
+                        {% autoescape off %}{{ section.text }}{% endautoescape %}
+                    </div>
+                </li>
+            {% endfor %}
+            </ol>
+        </li>
+    {% endfor %}
+    </ol>
+    
+    <div id="participate">
+        <p>Participate in this bill at <em>http://publicmarkup.org{{ legislation.get_absolute_url }}</em>.</p>
+        <p>PublicMarkup.org is a project of the Sunlight Foundation.</p>
+    </div>
+    
+</div>
+</body>
+</html>

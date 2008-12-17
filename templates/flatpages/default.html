@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block title %} - {{ flatpage.title }}{% endblock %}
+
+{% block content %}
+	<div id="doc4" class="yui-t7">
+		{% include "header.html" %}
+		
+<div id="bd">
+	<div class="yui-g"  >
+		<div id="flat_container">
+			<div id="flat_container_top">
+				<h2>{{ flatpage.title }}</h2>
+			</div>
+			
+
+					<div id="flat_content_new">
+					
+					
+						<div id="flat_left_new">{{ flatpage.content }} 	</div>
+							
+					</div>
+					
+					
+		</div>
+	</div>
+</div>
+		
+		
+		
+		{% include "footer.html" %}
+	</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+body {
+	background-color: #2D1C14;
+	font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
+	text-align: center;
+}
+h2 { font-size: 108%; font-weight: bold; color: #333; }
+h3 { font-size: 131%; font-weight: bold; color: #933; }
+h4 { font-size: 123.1%; font-weight: bold; color: #333; margin: 10px 0;}
+h4 a { color: #333; text-decoration: none; }
+#container { background-color: #fff; margin: 0 auto; text-align: left; width: 980px; }
+#content { padding: 15px; }
+.clear {
+	display:inline-block;
+}
+.clear:after {
+	display:block; 
+	visibility:hidden; 
+	clear:both; 
+	height:0; 
+	content: "."; 
+}
+.title-description { margin: 20px 0; line-height: 140%; }
+.title-description object { float: left; margin-right: 15px; }
+/*** section style ***/
+.sections { border-top: 1px solid #666; }
+.section { margin: 20px 0 30px 0; }
+.section .section-text {
+	border: 1px solid #bbb;
+	float: left;
+	font-size: 92%;
+	line-height: 130%;
+	margin-left: 20px;
+	padding: 0 10px;
+	width: 400px;
+}
+.section .section-text blockquote { margin-left: 30px; }
+.section .section-text p { margin: 10px 0; }
+.section .section-comments {
+	float: left;
+	padding: 0 10px;
+	width: 480px;
+}
+.section .section-comments .hentry { border-bottom: 1px solid #999; margin: 4px 0; padding: 5px; }
+.section .section-comments .hentry .profile-image { border: 1px solid #666; float: right; }
+.section .section-comments .hentry .entry-content { padding: 5px; }
+.section .section-comments .hentry .meta { color: #999; font-size: 85%; }
+.section .section-comments .section-comment-form { display: none; }
