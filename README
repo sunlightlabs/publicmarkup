@@ -1,5 +1,5 @@
 depends on
-- Django trunk revision 7739
+- Django trunk revision >= 8961 or Django 1.0
 - recaptcha-client
 - roman numeral example used in Dive Into Python
 http://diveintopython.org/download/diveintopython-examples-5.4.zip
