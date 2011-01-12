@@ -18,8 +18,8 @@
 				        <div id="comments_off">The public comment period for this legislation has now ended.</div>
 				        {% endif %}
 						<div id="section_section_info_box">
-							{% get_free_comment_count for legislation.section section.id as comment_count %}
-							{% get_free_comment_list for legislation.section section.id as comment_list %}
+							{% get_comment_count for legislation.section section.id as comment_count %}
+							{% get_comment_list for legislation.section section.id as comment_list %}
 						   	<!-- <h1>{{ section.title.legislation }}</h1> -->
 							<h2>{{ section.title }}</h2>
 							<h3>{{ section }} <span class="section_section_comment_title">(<a href="#comments_start" class="section_section_comment_title">{{ comment_count }}&nbsp;Comment{{ comment_count|pluralize }}</a>)</span>
@@ -40,14 +40,14 @@
 							<div id="section_nav">
 							<div id="section_nav_previous">
 								{% if previous_section %}
-								{% get_free_comment_count for legislation.section previous_section.id as previous_comment_count %}
+								{% get_comment_count for legislation.section previous_section.id as previous_comment_count %}
 								<span class="section_walking"><a href="{{ previous_section.get_absolute_url }}" class="section_walking">
 								Sec. {{ previous_section.number }} ({{ previous_comment_count }} comment{{ previous_comment_count|pluralize }})</a></span>
 								{% endif %}
 							</div>
 							<div id="section_nav_next">
 								{% if next_section %}
-								{% get_free_comment_count for legislation.section next_section.id as next_comment_count %}
+								{% get_comment_count for legislation.section next_section.id as next_comment_count %}
 								<span class="section_walking"><a href="{{ next_section.get_absolute_url }}" class="section_walking">
 								Sec. {{ next_section.number }} ({{ next_comment_count }} comment{{ next_comment_count|pluralize }})</a></span>
 								{% endif %}
@@ -81,14 +81,14 @@
 							<div id="lower_section_nav">
 							<div id="lower_section_nav_previous">
 								{% if previous_section %}
-								{% get_free_comment_count for legislation.section previous_section.id as previous_comment_count %}
+								{% get_comment_count for legislation.section previous_section.id as previous_comment_count %}
 								<span class="section_walking"><a href="{{ previous_section.get_absolute_url }}" class="section_walking">
 								Sec. {{ previous_section.number }} ({{ previous_comment_count }} comment{{ previous_comment_count|pluralize }})</a></span>
 								{% endif %}
 							</div>
 							<div id="lower_section_nav_next">
 								{% if next_section %}
-								{% get_free_comment_count for legislation.section next_section.id as next_comment_count %}
+								{% get_comment_count for legislation.section next_section.id as next_comment_count %}
 								<span class="section_walking"><a href="{{ next_section.get_absolute_url }}" class="section_walking">
 								Sec. {{ next_section.number }} ({{ next_comment_count }} comment{{ next_comment_count|pluralize }})</a></span>
 								{% endif %}
@@ -119,7 +119,7 @@
 								<div id="comment_box">
 								<h1>Comment on {{ section }}</h1>
 								<p class="comment_disclaimer_leg">(You may comment anonymously. Moderators may remove offensive or off-topic comments.)</p>
-									{% free_comment_form for legislation.section section.id %}
+									{% render_comment_form for legislation.section section.id %}
 								</div>
 							</div>
 						</div>

@@ -62,10 +62,8 @@
 									<ol class="sections" id="section-list">
 										{% for section in title.sections.all %}
 											<li class="section clear" id="section_{{ section.number }}">
-										
-												{% get_free_comment_count for legislation.section section.id as comment_count %}
-												{% get_free_comment_list for legislation.section section.id as comment_list %}
-													
+												{% get_comment_count for legislation.section section.id as comment_count %}
+												{% get_comment_list for legislation.section section.id as comment_list %}
 												<a name="{{ section.number }}"></a>
 												<h3 class="section_heads">
 													<a href="{% url section_detail title.legislation.slug,title.number,section.number %}">{{ section }}</a>  
@@ -76,8 +74,8 @@
 												</h3>
 												<div class="section-text">{% autoescape off %}{{ section.text|textile }}{% endautoescape %}</div>
 											
-												{% get_free_comment_count for legislation.section section.id as comment_count %}
-												{% get_free_comment_list for legislation.section section.id as comment_list %}
+												{% get_comment_count for legislation.section section.id as comment_count %}
+												{% get_comment_list for legislation.section section.id as comment_list %}
 												<div class="section-comments hfeed">
 												
 												{% if section.summary %}

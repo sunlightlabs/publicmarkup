@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.comments.views.comments import post_free_comment
+from django.contrib.comments.views.comments import post_comment
 from django.http import Http404, HttpResponseRedirect, HttpResponseServerError
 from django.shortcuts import render_to_response
 from django.views.generic.list_detail import object_list
@@ -15,8 +15,11 @@ def bill(request):
     return HttpResponseRedirect(legislation.get_absolute_url())
 
 def legislation_detail(request, legislation_slug):
-    legislation = Legislation.objects.get(slug=legislation_slug)
-    return render_to_response("legislation/legislation_detail.html", locals())
+    try:
+        legislation = Legislation.objects.get(slug=legislation_slug)
+        return render_to_response("legislation/legislation_detail.html", locals())
+    except Legislation.DoesNotExist:
+        return HttpResponseRedirect('/')
 
 def title_detail(request, legislation_slug, title_num):
     title = Title.objects.get(number=title_num, legislation__slug=legislation_slug)
@@ -76,7 +79,7 @@ def save_free_comment(request):
             
                 extra_context = {"recaptcha_html": captcha.displayhtml(settings.RECAPTCHA_PUBLIC_KEY)}
         
-                return post_free_comment(request, extra_context)
+                return post_comment(request, extra_context)
                 
             else:
                 

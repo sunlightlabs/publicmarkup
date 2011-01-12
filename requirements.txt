@@ -1,0 +1,8 @@
+Django
+boto
+-e git://github.com/sunlightlabs/django-mediasync.git#egg=mediasync
+recaptcha-client
+markdown
+textile
+-e git://github.com/jcarbaugh/python-serpente.git#egg=serpente
+python-postmark

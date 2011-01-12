@@ -1,7 +1,7 @@
 from django.conf import settings
-from django.contrib.comments.models import FreeComment
+from django.contrib.comments.models import Comment
 from django.db import models
-import roman
+import serpente
 
 class Resource(models.Model):
     name = models.CharField(max_length=128, unique=True)
@@ -19,7 +19,7 @@ class Legislation(models.Model):
     def get_sections_comment_count(self):
         sections = Section.objects.filter(title__legislation=self)
         section_ids = [section.id for section in sections]
-        comment_count = FreeComment.objects.filter(object_id__in=section_ids,
+        comment_count = Comment.objects.filter(object_pk__in=section_ids,
             content_type__app_label__exact="legislation",
             content_type__model__exact="section", site__id__exact=settings.SITE_ID).count()
         return comment_count
@@ -35,17 +35,17 @@ class Title(models.Model):
     class Meta:
         ordering = ['number','name']
     def roman_number(self):
-        return roman.toRoman(self.number)
+        return serpente.encode(self.number)
     def get_absolute_url(self):
         return "/bill/%s/%i/" % (self.legislation.slug, self.number)
     def get_sections_comment_count(self):
         section_ids = [section.id for section in self.sections.all]
-        comment_count = FreeComment.objects.filter(object_id__in=section_ids,
+        comment_count = Comment.objects.filter(object_pk__in=section_ids,
             content_type__app_label__exact="legislation",
             content_type__model__exact="section", site__id__exact=settings.SITE_ID).count()
         return comment_count
     def __unicode__(self):
-        return "TITLE %s - %s" % (roman.toRoman(self.number), self.name)
+        return "TITLE %s - %s" % (self.roman_number(), self.name)
 
 class Section(models.Model):
     title = models.ForeignKey(Title, related_name="sections")

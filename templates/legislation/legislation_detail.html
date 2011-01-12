@@ -1,6 +1,6 @@
 {% extends "index.html" %}
-
 {% load comments %}
+
 {% block title %} - {{ legislation }}{% endblock %}
 {% block head %}
 	<link rel="alternate" type="application/rss+xml" title="Comments on {{ legislation.name }}" href="http://publicmarkup.org/feed/comments/{{ legislation.slug }}/" />
@@ -8,8 +8,8 @@
 
 {% block content %}
 
-	{% get_free_comment_count for legislation.legislation legislation.id as comment_count %}
-	{% get_free_comment_list for legislation.legislation legislation.id as comment_list %}
+	{% get_comment_count for legislation.legislation legislation.id as comment_count %}
+	{% get_comment_list for legislation.legislation legislation.id as comment_list %}
 	<div id="doc4" class="yui-t2">
 		{% include "header.html" %}
 		<div id="bd">
@@ -50,7 +50,7 @@
 												{% if title.sections %}
 													<ol id="legislation_list_section">
 														{% for section in title.sections.all %}
-														{% get_free_comment_count for legislation.section section.id as comment_count %}
+														{% get_comment_count for legislation.section section.id as comment_count %}
 														<li>
 														<a href="{% url section_detail legislation.slug,title.number,section.number %}">{{ section }} 
 														{% if comment_count %} 
@@ -95,9 +95,7 @@
 							<div id="comment_box">
 								<h1>Comment on {{ legislation }}:</h1>
 								<p class="comment_disclaimer_leg">(You are commenting on this legislation as a whole. Comments on a specific section of the bill should be left within that section)</p>
-								
-								
-								{% free_comment_form for legislation.legislation legislation.id %}
+								{% render_comment_form for legislation.legislation legislation.id %}
 							</div>
 							{% endif %}
 						</div>
