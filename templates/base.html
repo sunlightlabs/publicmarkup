@@ -20,52 +20,133 @@
     
     <link rel="shortcut icon" href="http://assets.sunlightfoundation.com/site/4.0/favicon.ico"> 
     <link rel="apple-touch-icon" href="http://assets.sunlightfoundation.com/site/4.0/apple-touch-icon.png">
-
-	{% comment %}{% css "style/production.css" %}{% endcomment %}
-	{% block css %}
-		<style>
-			html { margin: 0; padding: 0; }
-			body {
-				font-family: sans-serif;
-				margin: 0;
-				text-align: center;
-			}
-			#container {
-				margin: 0 auto;
-				text-align: left;
-				width: 960px;
-			}
-			header[role=banner] {
-				background-color: #5F728C;
-				margin-bottom: 0.2em;
-				padding: 1em;
-			}
-			header[role=banner] h1 { margin: 0; padding: 0; }
-			aside.sidebar {
-				float: left;
-				width: 250px;
-			}
-			nav.sidebar ul.titles { list-style: none; margin: 0; padding: 0; }
-			nav.sidebar ul.titles a {
-				background-color: #FFFFFF;
-				border: 1px solid #EEEEEE;
-				color: #000000;
-				display: block;
-			}
-			nav.sidebar ul.titles a b { display: block; }
-			section.markup {
-				float: right;
-				width: 700px;
-			}
-			span.nocomment {
-				background-color: #953931;
-				color: #FFF;
-				display: block;
-				padding: 1em 0;
-				text-align: center;
-			}
-		</style>
-	{% endblock %}
+    <link href='http://fonts.googleapis.com/css?family=Neuton|Puritan' rel='stylesheet' type='text/css'>
+    {% comment %}{% css "style/production.css" %}{% endcomment %}
+    {% block css %}
+        <style>
+            html { margin: 0; padding: 0; }
+            body {
+                font-family: Puritan, sans-serif;
+                margin: 0;
+                text-align: center;
+            }
+            .clear { clear: both; }
+            a, a:visited, a:active { color: #5F728C; }
+            #container {
+                margin: 0 auto;
+                text-align: left;
+                width: 960px;
+            }
+            header[role=banner] {
+                background-color: #5F728C;
+                margin-bottom: 0.2em;
+                padding: 1em;
+            }
+            header[role=banner] h1 {
+                font-family: Neuton;
+                font-size: 36px;
+                margin: 0;
+                padding: 0;
+            }
+            h2.legislation-name a {
+                color: #000;
+                font-size: 36px;
+                text-decoration: none;
+            }
+            h2.legislation-name a:hover { color: #5F728C; }
+            h3.title-name {
+                color: #333;
+                font-size: 24px;
+            }
+            p.legislation-meta {
+                font-size: 14px;
+                margin-top: 0;
+                padding: 0.2em 0.2em;
+            }
+            nav.titles {
+                border-bottom: 2px solid #333;
+                border-top: 2px solid #333;
+                float: left;
+                width: 250px;
+            }
+            nav.titles ul { list-style: none; margin: 0; padding: 0; }
+            nav.titles ul li { border-bottom: 1px solid #CCC; }
+            nav.titles ul li:last-child { border-bottom: 0; }
+            nav.titles ul a {
+                background-color: #FFFFFF;
+                color: #333;
+                display: block;
+                font-size: 14px;
+                line-height: 18px;
+                padding: 1em 0.5em;
+                text-decoration: none;
+            }
+            nav.titles ul a:hover { background-color: #EEE; }
+            nav.titles ul a b { color: #000; display: block; }
+            
+            nav.sections {
+                border-bottom: 2px solid #333;
+                border-top: 2px solid #333;
+                float: right;
+                font-family: Puritan;
+                margin: 4em 0 2em 2em;
+                width: 240px;
+            }
+            nav.sections ol { list-style: none; margin: 0; padding: 0; }
+            nav.sections ol li {
+                border-bottom: 1px solid #CCC;
+            }
+            nav.sections ol li:last-child { border-bottom: 0; }
+            nav.sections a {
+                color: #333;
+                display: block;
+                line-height: 18px;
+                padding: 1em 0.5em;
+                text-decoration: none;
+            }
+            nav.sections a:hover { background-color: #FFF; color: #000; }
+            
+            section.markup {
+                float: right;
+                width: 690px;
+            }
+            span.nocomment {
+                color: #953931;
+                float: right;
+                font-weight: bold;
+            }
+            div.justification {
+                background-color: #F1F8EA;
+                font-family: Neuton;
+                font-size: 14px;
+                padding: 0.5em 2em;
+            }
+            div.justification p { margin-left: 1em; }
+            ol.legislation-outline { list-style-type: none; padding-left: 1em; }
+            ol.legislation-outline > li { margin: 2em 0; }
+            ol.legislation-outline a { color: #333; text-decoration: none; }
+            ol.legislation-outline a.title { font-weight: bold; line-height: 24px; }
+            ol.legislation-outline a:hover { color: #5F728C; }
+            ol.section-outline { list-style-type: none; margin: 1em 0 2em; padding-left: 1em; }
+            ol.section-outline li { margin-bottom: 0.8em; }
+            
+            
+            section.comments { margin-left: 1em; }
+            section.comments article { margin: 2em 0; }
+            section.comments header { margin-bottom: 0.3em; }
+            section.comments header a { color: #333; text-decoration: none; }
+            section.comments header a:hover { color: #5F728C; }
+            section.comments div.comment {
+                background-color: #F1F8EA;
+                color: #333;
+                display: block;
+                font-family: Neuton;
+                font-size: 12px;
+                padding: 1em;
+                text-decoration: none;
+            }
+        </style>
+    {% endblock %}
     
     {% block head %}{% endblock %}
     
@@ -73,24 +154,24 @@
     
 </head>
 <body>
-	
-	<div id="container">
-		
-		<header role="banner">
-			<h1>Public Markup</h1>
-		</header>
+    
+    <div id="container">
+        
+        <header role="banner">
+            <h1>Public Markup</h1>
+        </header>
 
-		<div role="main">
-			{% block content %}{% endblock %}
-		</div>
-		
-	</div>
-	
-	{% js "scripts/jquery-1.4.4.min.js" %}
+        <div role="main">
+            {% block content %}{% endblock %}
+        </div>
+        
+    </div>
+    
+    {% js "scripts/jquery-1.4.4.min.js" %}
     <script src="http://assets.sunlightlabs.com/scripts/sjs/1.3/sunlight.js"></script>
-	{% block js %}{% endblock %}
-	
-	<script src="http://services.sunlightlabs.com/brandingbar/hat_js/publicmarkup/" type="text/javascript"></script>
+    {% block js %}{% endblock %}
+    
+    <script src="http://services.sunlightlabs.com/brandingbar/hat_js/publicmarkup/" type="text/javascript"></script>
     <script> 
         var _gaq = [['_setAccount', 'UA-1265484-15'], ['_trackPageview']];
         (function(d, t) {

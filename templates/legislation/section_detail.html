@@ -1,153 +1,163 @@
 {% extends "index.html" %}
-
 {% load comments %}
 {% load markup %}
-{% block title %} - {{ section }} - {{ section.title.legislation }}{% endblock %}
+
+{% block title %}{{ section }} - {{ section.title.legislation }}{% endblock %}
+
 {% block head %}
 	<link rel="alternate" type="application/rss+xml" title="Comments on {{ section.title.legislation.name }}" href="http://publicmarkup.org/feed/comments/{{ section.title.legislation.slug }}/" />
 {% endblock %}
 
 {% block content %}
-	<div id="doc4" class="yui-t2">
-		{% include "header.html" %}
-		<div id="bd">
-			<div id="yui-main">
-				<div class="yui-b">
-					<div class="yui-g">
-					    {% if not section.title.legislation.allow_comments %}
-				        <div id="comments_off">The public comment period for this legislation has now ended.</div>
-				        {% endif %}
-						<div id="section_section_info_box">
-							{% get_comment_count for legislation.section section.id as comment_count %}
-							{% get_comment_list for legislation.section section.id as comment_list %}
-						   	<!-- <h1>{{ section.title.legislation }}</h1> -->
-							<h2>{{ section.title }}</h2>
-							<h3>{{ section }} <span class="section_section_comment_title">(<a href="#comments_start" class="section_section_comment_title">{{ comment_count }}&nbsp;Comment{{ comment_count|pluralize }}</a>)</span>
-							<a href="http://publicmarkup.org/feed/comments/{{ section.title.legislation.slug }}/"><img src="http://media.publicmarkup.org/images/feed-icon-14x14.png" ALT="subscribe to the comments feed"></a>
-							
-							</h3>
-						
-							{% if section.summary %}
-								<div id="justification">{% autoescape off %}{{ section.summary|urlizetrunc:"40" }}{% endautoescape %}</div>
-							{% endif %}
-						</div>
-						
-						
-						<div id="section_section_container" class="pale_yellow">
-							<div id="section_text_wide" class="section-text">{% autoescape off %}{{ section.text|textile }}{% endautoescape %}</div>
-							
-							
-							<div id="section_nav">
-							<div id="section_nav_previous">
-								{% if previous_section %}
-								{% get_comment_count for legislation.section previous_section.id as previous_comment_count %}
-								<span class="section_walking"><a href="{{ previous_section.get_absolute_url }}" class="section_walking">
-								Sec. {{ previous_section.number }} ({{ previous_comment_count }} comment{{ previous_comment_count|pluralize }})</a></span>
-								{% endif %}
-							</div>
-							<div id="section_nav_next">
-								{% if next_section %}
-								{% get_comment_count for legislation.section next_section.id as next_comment_count %}
-								<span class="section_walking"><a href="{{ next_section.get_absolute_url }}" class="section_walking">
-								Sec. {{ next_section.number }} ({{ next_comment_count }} comment{{ next_comment_count|pluralize }})</a></span>
-								{% endif %}
-							</div>
-						</div>
-							
-							
-						</div>
-						
-						
-						
-						<a name="comments_start"></a>
-						{% if comment_count %}
-						<div id="leg_comments_box">
-								
-								<h2>{{ comment_count }} comment{{ comment_count|pluralize }} on {{ section }}</h2>
-								<ul>
-									{% for comment in comment_list %}
-									<li id="comment_{{ comment.id }}">
-										{% if forloop.last %}<div id="latest-comment"></div>{% endif %}
-										<p class="the_comment">{{ comment.comment|urlizetrunc:"40"|linebreaksbr }}</p>
-										<span class="comment_attrib">
-											<a href="#comment_{{ comment.id }}" class="comment_attrib">posted by {{ comment.user_name }} at {{ comment.submit_date|date:"F j, Y" }}</a>
-										</span>
-									</li>
-									{% endfor %}
-								</ul>
-								<a id="last_comment"></a>
-							
-							
-							<div id="lower_section_nav">
-							<div id="lower_section_nav_previous">
-								{% if previous_section %}
-								{% get_comment_count for legislation.section previous_section.id as previous_comment_count %}
-								<span class="section_walking"><a href="{{ previous_section.get_absolute_url }}" class="section_walking">
-								Sec. {{ previous_section.number }} ({{ previous_comment_count }} comment{{ previous_comment_count|pluralize }})</a></span>
-								{% endif %}
-							</div>
-							<div id="lower_section_nav_next">
-								{% if next_section %}
-								{% get_comment_count for legislation.section next_section.id as next_comment_count %}
-								<span class="section_walking"><a href="{{ next_section.get_absolute_url }}" class="section_walking">
-								Sec. {{ next_section.number }} ({{ next_comment_count }} comment{{ next_comment_count|pluralize }})</a></span>
-								{% endif %}
-							</div>
-						</div>
-							
-							
-							</div>
-							
-						
-							
+    
+    {% get_comment_count for legislation.section section.id as comment_count %}
+	{% get_comment_list for legislation.section section.id as comment_list %}
+    
+    <h2 class="legislation-name">
+        <a href="{{ section.title.legislation.get_absolute_url }}">{{ section.title.legislation }}</a>
+    </h2>
+    
+    <nav class="titles">
+        <ul>
+            {% for title in section.title.legislation.titles.all %}
+                <li>
+                    <a href="{% url title_detail section.title.legislation.slug, title.number %}">
+                        <b>Title {{ title.roman_number }}</b>
+                        {{ title.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
 
-						{% endif %}
+    <section class="markup">
+
+        <p class="legislation-meta">
+            {% if not section.title.legislation.allow_comments %}
+                <span class="nocomment">The public comment period for this legislation has ended.</span>
+            {% endif %}
+            <a href="#title-outline">{{ comment_count }}</a> section comment{{ comment_count|pluralize }}
+        </p>
+        
+        <h3 class="title-name">Title {{ section.title.roman_number }} - {{ section.title.name }}</h3>
+        <h4 class="section-name">{{ section }}</h4>
+        
+        <div class="justification">
+            {% if section.summary %}
+                {% autoescape off %}{{ section.summary|urlizetrunc:"40" }}{% endautoescape %}
+			{% endif %}
+            <div class="clear"></div>
+        </div>
+        
+    </section>
 						
-						
-						
-						
-						
-						
-					</div>
-					
-					{% if section.title.legislation.allow_comments %}
-					<div class="yui-g">
-						<div id="container2" >
-							<div id="content2">	
-								
-								<a name="comment_form"></a>
-								<div id="comment_box">
-								<h1>Comment on {{ section }}</h1>
-								<p class="comment_disclaimer_leg">(You may comment anonymously. Moderators may remove offensive or off-topic comments.)</p>
-									{% render_comment_form for legislation.section section.id %}
-								</div>
-							</div>
-						</div>
-					</div>
-					{% endif %}
-				</div>
-			</div>
-			<div class="yui-b">
-				{% with section.title.legislation as legislation %}
-					{% include "bill_left_nav.html" %}
-				{% endwith %}
-			</div>
-		</div>
-		{% include "footer.html" %}
-	</div>
-	<script type="text/javascript" charset="utf-8">
-		Sunlight.Application.addLoadEvent(function() {
-			var commentContainers = YAHOO.util.Dom.getElementsByClassName('section-comment-container', 'div');
-			for (var i = 0; i < commentContainers.length; i++) {
-				var commentContainer = commentContainers[i];
-				var commentControl = YAHOO.util.Dom.getElementsByClassName('section-comment-control', 'a', commentContainer)[0];
-				commentControl.onclick = function() {
-					this.style.display = 'none';
-					var commentForm = YAHOO.util.Dom.getElementsByClassName('section-comment-form', 'div', this.parentNode)[0];
-					commentForm.style.display = 'inline';
-					return false;
-				};
-			}
-		});
-	</script>	
+                        {# <div id="section_section_container" class="pale_yellow"> #}
+                        {#  <div id="section_text_wide" class="section-text">{% autoescape off %}{{ section.text|textile }}{% endautoescape %}</div> #}
+                        {#   #}
+                        {#   #}
+                        {#  <div id="section_nav"> #}
+                        {#  <div id="section_nav_previous"> #}
+                        {#      {% if previous_section %} #}
+                        {#      {% get_comment_count for legislation.section previous_section.id as previous_comment_count %} #}
+                        {#      <span class="section_walking"><a href="{{ previous_section.get_absolute_url }}" class="section_walking"> #}
+                        {#      Sec. {{ previous_section.number }} ({{ previous_comment_count }} comment{{ previous_comment_count|pluralize }})</a></span> #}
+                        {#      {% endif %} #}
+                        {#  </div> #}
+                        {#  <div id="section_nav_next"> #}
+                        {#      {% if next_section %} #}
+                        {#      {% get_comment_count for legislation.section next_section.id as next_comment_count %} #}
+                        {#      <span class="section_walking"><a href="{{ next_section.get_absolute_url }}" class="section_walking"> #}
+                        {#      Sec. {{ next_section.number }} ({{ next_comment_count }} comment{{ next_comment_count|pluralize }})</a></span> #}
+                        {#      {% endif %} #}
+                        {#  </div> #}
+                        {# </div> #}
+                        {#   #}
+                        {#   #}
+                        {# </div> #}
+            {#           #}
+            {#           #}
+            {#           #}
+            {#          <a name="comments_start"></a> #}
+            {#          {% if comment_count %} #}
+            {#          <div id="leg_comments_box"> #}
+            {#                   #}
+            {#                  <h2>{{ comment_count }} comment{{ comment_count|pluralize }} on {{ section }}</h2> #}
+            {#                  <ul> #}
+            {#                      {% for comment in comment_list %} #}
+            {#                      <li id="comment_{{ comment.id }}"> #}
+            {#                          {% if forloop.last %}<div id="latest-comment"></div>{% endif %} #}
+            {#                          <p class="the_comment">{{ comment.comment|urlizetrunc:"40"|linebreaksbr }}</p> #}
+            {#                          <span class="comment_attrib"> #}
+            {#                              <a href="#comment_{{ comment.id }}" class="comment_attrib">posted by {{ comment.person_name }} at {{ comment.submit_date|date:"F j, Y" }}</a> #}
+            {#                          </span> #}
+            {#                      </li> #}
+            {#                      {% endfor %} #}
+            {#                  </ul> #}
+            {#                  <a name="last_comment"></a> #}
+            {#               #}
+            {#               #}
+            {#              <div id="lower_section_nav"> #}
+            {#              <div id="lower_section_nav_previous"> #}
+            {#                  {% if previous_section %} #}
+            {#                  {% get_comment_count for legislation.section previous_section.id as previous_comment_count %} #}
+            {#                  <span class="section_walking"><a href="{{ previous_section.get_absolute_url }}" class="section_walking"> #}
+            {#                  Sec. {{ previous_section.number }} ({{ previous_comment_count }} comment{{ previous_comment_count|pluralize }})</a></span> #}
+            {#                  {% endif %} #}
+            {#              </div> #}
+            {#              <div id="lower_section_nav_next"> #}
+            {#                  {% if next_section %} #}
+            {#                  {% get_comment_count for legislation.section next_section.id as next_comment_count %} #}
+            {#                  <span class="section_walking"><a href="{{ next_section.get_absolute_url }}" class="section_walking"> #}
+            {#                  Sec. {{ next_section.number }} ({{ next_comment_count }} comment{{ next_comment_count|pluralize }})</a></span> #}
+            {#                  {% endif %} #}
+            {#              </div> #}
+            {#          </div> #}
+            {#               #}
+            {#               #}
+            {#              </div> #}
+            {#               #}
+            {#           #}
+            {#               #}
+            {#  #}
+            {#          {% endif %} #}
+            {#           #}
+            {#           #}
+            {#           #}
+            {#           #}
+            {#           #}
+            {#           #}
+            {#      </div> #}
+            {#       #}
+            {#      {% if section.title.legislation.allow_comments %} #}
+            {#      <div class="yui-g"> #}
+            {#          <div id="container2" > #}
+            {#              <div id="content2">  #}
+            {#                   #}
+            {#                  <a name="comment_form"></a> #}
+            {#                  <div id="comment_box"> #}
+            {#                  <h1>Comment on {{ section }}</h1> #}
+            {#                  <p class="comment_disclaimer_leg">(You may comment anonymously. Moderators may remove offensive or off-topic comments.)</p> #}
+            {#                      {% render_comment_form for legislation.section section.id %} #}
+            {#                  </div> #}
+            {#              </div> #}
+            {#          </div> #}
+            {#      </div> #}
+            {#      {% endif %} #}
+            {#  </div> #}
+            {# </div> #}
+    {# <script type="text/javascript" charset="utf-8"> #}
+    {#  Sunlight.Application.addLoadEvent(function() { #}
+    {#      var commentContainers = YAHOO.util.Dom.getElementsByClassName('section-comment-container', 'div'); #}
+    {#      for (var i = 0; i < commentContainers.length; i++) { #}
+    {#          var commentContainer = commentContainers[i]; #}
+    {#          var commentControl = YAHOO.util.Dom.getElementsByClassName('section-comment-control', 'a', commentContainer)[0]; #}
+    {#          commentControl.onclick = function() { #}
+    {#              this.style.display = 'none'; #}
+    {#              var commentForm = YAHOO.util.Dom.getElementsByClassName('section-comment-form', 'div', this.parentNode)[0]; #}
+    {#              commentForm.style.display = 'inline'; #}
+    {#              return false; #}
+    {#          }; #}
+    {#      } #}
+    {#  }); #}
+    {# </script> #}	
 {% endblock %}
