@@ -72,7 +72,7 @@
 													{% endif %}
 													<!-- <a href="#{{ section.number }}">#</a> -->
 												</h3>
-												<div class="section-text">{% autoescape off %}{{ section.text|textile }}{% endautoescape %}</div>
+												<div class="section-text">{% autoescape off %}{{ section.text|markdown }}{% endautoescape %}</div>
 											
 												{% get_comment_count for legislation.section section.id as comment_count %}
 												{% get_comment_list for legislation.section section.id as comment_list %}

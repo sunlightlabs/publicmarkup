@@ -12,7 +12,6 @@ feeds = {
 
 urlpatterns = patterns('publicmarkup.legislation.views',
     url(r'^$', 'index', index_dict, name="index"),
-    url(r'^contact/$', 'contact', name="contact"),
     url(r'^bill/$', 'bill', name='bill'),
     url(r'^bill/(?P<legislation_slug>[-\w]+)/$', 'legislation_detail', name='legislation_detail'),
     url(r'^bill/(?P<legislation_slug>[-\w]+)/print/$', 'legislation_print', name='legislation_print'),
