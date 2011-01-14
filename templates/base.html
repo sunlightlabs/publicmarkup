@@ -20,13 +20,13 @@
     
     <link rel="shortcut icon" href="http://assets.sunlightfoundation.com/site/4.0/favicon.ico"> 
     <link rel="apple-touch-icon" href="http://assets.sunlightfoundation.com/site/4.0/apple-touch-icon.png">
-    <link href='http://fonts.googleapis.com/css?family=Neuton|Puritan' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Neuton' rel='stylesheet' type='text/css'>
     {% comment %}{% css "style/production.css" %}{% endcomment %}
     {% block css %}
         <style>
-            html { margin: 0; padding: 0; }
+            html { font-size: 80%; margin: 0; padding: 0; }
             body {
-                font-family: Puritan, sans-serif;
+                font-family: Helvetica, sans-serif;
                 margin: 0;
                 text-align: center;
             }
@@ -44,28 +44,29 @@
             }
             header[role=banner] h1 {
                 font-family: Neuton;
-                font-size: 36px;
                 margin: 0;
                 padding: 0;
             }
+            h2.legislation-name { margin: 2em 0; }
             h2.legislation-name a {
                 color: #000;
-                font-size: 36px;
+                font-size: 150%;
                 text-decoration: none;
             }
             h2.legislation-name a:hover { color: #5F728C; }
+            h3 { margin: 0 0 1em 0; }
             h3.title-name {
                 color: #333;
-                font-size: 24px;
+                font-size: 170%;
             }
             p.legislation-meta {
-                font-size: 14px;
+/*                font-size: 14px;*/
                 margin-top: 0;
                 padding: 0.2em 0.2em;
             }
             nav.titles {
-                border-bottom: 2px solid #333;
-                border-top: 2px solid #333;
+                border-bottom: 2px solid #444;
+                border-top: 2px solid #444;
                 float: left;
                 width: 250px;
             }
@@ -76,8 +77,8 @@
                 background-color: #FFFFFF;
                 color: #333;
                 display: block;
-                font-size: 14px;
-                line-height: 18px;
+                font-size: 90%;
+                line-height: 1.5em;
                 padding: 1em 0.5em;
                 text-decoration: none;
             }
@@ -88,8 +89,8 @@
                 border-bottom: 2px solid #333;
                 border-top: 2px solid #333;
                 float: right;
-                font-family: Puritan;
-                margin: 4em 0 2em 2em;
+                font-family: Helvetica;
+                margin: 4em 0 4em 4em;
                 width: 240px;
             }
             nav.sections ol { list-style: none; margin: 0; padding: 0; }
@@ -100,7 +101,8 @@
             nav.sections a {
                 color: #333;
                 display: block;
-                line-height: 18px;
+                font-size: 87.7%;
+                line-height: 1.5em;
                 padding: 1em 0.5em;
                 text-decoration: none;
             }
@@ -111,21 +113,28 @@
                 width: 690px;
             }
             span.nocomment {
-                color: #953931;
+                background-color: #953931;
+                color: #FFF;
                 float: right;
-                font-weight: bold;
+                padding: 5px 15px;
+                   -moz-border-radius: 10px; /* FF1+ */
+                -webkit-border-radius: 10px; /* Saf3-4 */
+                        border-radius: 10px; /* Opera 10.5, IE9, Saf5, Chrome */;
             }
             div.justification {
                 background-color: #F1F8EA;
                 font-family: Neuton;
-                font-size: 14px;
+                font-size: 90%;
                 padding: 0.5em 2em;
             }
             div.justification p { margin-left: 1em; }
             ol.legislation-outline { list-style-type: none; padding-left: 1em; }
             ol.legislation-outline > li { margin: 2em 0; }
             ol.legislation-outline a { color: #333; text-decoration: none; }
-            ol.legislation-outline a.title { font-weight: bold; line-height: 24px; }
+            ol.legislation-outline a.title {
+                font-weight: bold;
+/*                line-height: 24px;*/
+            }
             ol.legislation-outline a:hover { color: #5F728C; }
             ol.section-outline { list-style-type: none; margin: 1em 0 2em; padding-left: 1em; }
             ol.section-outline li { margin-bottom: 0.8em; }
@@ -141,10 +150,44 @@
                 color: #333;
                 display: block;
                 font-family: Neuton;
-                font-size: 12px;
+/*                font-size: 12px;*/
                 padding: 1em;
                 text-decoration: none;
             }
+            
+            article.section { background-color: #F1F8EA; clear: both; }
+            article.section aside {
+                float: right;
+                font-size: 85%;
+                margin: 0 0 4em 4em;
+                padding: 1em;
+                width: 240px;
+            }
+            
+            article.section h4 { border-bottom: 1px solid #000; padding: 1em; }
+            article.section h4 a { text-decoration: none; }
+            
+            article.section div.section-text {
+                font-family: Neuton;
+                font-size: 90%;
+                padding: 0.5em 2em;
+            }
+            article.section div.section-text p { margin: 0 0 1em 0; padding: 0; }
+            article.section div.section-text ol { padding: 0 0 0 2em; }
+            article.section div.section-text li { margin: 0; padding: 0; }
+            article.section div.section-text ol li { list-style: lower-alpha outside; }
+            article.section div.section-text ol ol li { list-style: decimal outside; }
+            
+            article.section div.section-comments {
+                
+            }
+            article.section div.section-comments h5 { font-size: 120%; margin: 0.3em 0 1em; }
+            article.section div.section-comments ol { list-style: none; padding: 0; }
+            article.section div.section-comments ol a {
+                color: #999;
+                text-decoration: none;
+            }
+            article.section div.section-comments ol a:hover { color: #333; }
         </style>
     {% endblock %}
     
