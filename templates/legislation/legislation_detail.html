@@ -82,7 +82,7 @@
 										{% if forloop.last %}<div id="latest-comment"></div>{% endif %}
 										<p class="the_comment">{{ comment.comment|urlizetrunc:"40" }}</p>
 										<span class="comment_attrib">
-											<a href="{{ comment.get_content_object.get_absolute_url }}#comment_{{ comment.id }}" class="comment_attrib">posted by {{ comment.person_name }}, {{ comment.submit_date|date:"F j, Y" }}</a>
+											<a href="{{ comment.get_content_object.get_absolute_url }}#comment_{{ comment.id }}" class="comment_attrib">posted by {{ comment.user_name }}, {{ comment.submit_date|date:"F j, Y" }}</a>
 										</span>
 									</li>
 									{% endfor %}

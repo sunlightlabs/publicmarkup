@@ -70,7 +70,7 @@
 										{% if forloop.last %}<div id="latest-comment"></div>{% endif %}
 										<p class="the_comment">{{ comment.comment|urlizetrunc:"40"|linebreaksbr }}</p>
 										<span class="comment_attrib">
-											<a href="#comment_{{ comment.id }}" class="comment_attrib">posted by {{ comment.person_name }} at {{ comment.submit_date|date:"F j, Y" }}</a>
+											<a href="#comment_{{ comment.id }}" class="comment_attrib">posted by {{ comment.user_name }} at {{ comment.submit_date|date:"F j, Y" }}</a>
 										</span>
 									</li>
 									{% endfor %}
