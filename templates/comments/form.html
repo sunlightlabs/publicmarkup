@@ -17,7 +17,7 @@
     <ul>
         {% for field in form.visible_fields %}
             {% if field.errors %}{{ field.errors }}{% endif %}
-            <li class="field_{{ field.name}}{% if field.errors %} error{% endif %}"{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+            <li class="field_{{ field.name }}{% if field.errors %} error{% endif %}{% ifequal field.name "honeypot" %} hidden{% endifequal %}">
                 {{ field.label_tag }}
                 {{ field }}
             </li>
