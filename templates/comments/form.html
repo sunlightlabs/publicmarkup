@@ -1,21 +1,24 @@
 {% load comments i18n %}
+
 <form action="#comment-form" method="post" id="comment-form">{% csrf_token %}
-  {% if next %}<div><input type="hidden" name="next" value="{{ next }}" /></div>{% endif %}
-  {% for field in form %}
-    {% if field.is_hidden %}
-      <div>{{ field }}</div>
-    {% else %}
-      {% if field.errors %}{{ field.errors }}{% endif %}
-      <p
-        {% if field.errors %} class="error"{% endif %}
-        {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
-        {{ field.label_tag }} {{ field }}
-      </p>
+    {% if next %}
+        <input type="hidden" name="next" value="{{ next }}" />
     {% endif %}
-  {% endfor %}
-  {{ human_form.as_ul }}
-  <p class="submit">
-    <input type="submit" name="post" class="submit-post" value="{% trans "Post" %}" />
-    <input type="submit" name="preview" class="submit-preview" value="{% trans "Preview" %}" />
-  </p>
+    {% for field in form.hidden_fields %}
+        {{ field }}
+    {% endfor %}
+    <ul>
+        {% for field in form.visible_fields %}
+            {% if field.errors %}{{ field.errors }}{% endif %}
+            <li class="field_{{ field.name }}{% if field.errors %} error{% endif %}{% ifequal field.name "honeypot" %} hidden{% endifequal %}">
+                {{ field.label_tag }}
+                {{ field }}
+            </li>
+        {% endfor %}
+        {{ human_form.as_ul }}
+    </ul>
+    <p class="submit">
+        <input type="submit" name="post" class="submit-post" value="{% trans "Post" %}" />
+        <input type="submit" name="preview" class="submit-preview" value="{% trans "Preview" %}" />
+    </p>
 </form>

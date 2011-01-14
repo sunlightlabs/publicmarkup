@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "legislation/base.html" %}
 {% load comments %}
 {% load htmlhelper %}
 {% load markup %}
@@ -9,68 +9,35 @@
     <link rel="alternate" type="application/rss+xml" title="Comments on {{ title.legislation.name }}" href="http://publicmarkup.org/feed/comments/{{ title.legislation.slug }}/" />
 {% endblock %}
 
-{% block content %}
+{% block markuphead %}
+    <h3 class="title-name">Title {{ title.roman_number }} - {{ title.name }}</h3>
+{% endblock %}
 
-    <h2 class="legislation-name">
-        <a href="{{ title.legislation.get_absolute_url }}">{{ title.legislation }}</a>
-    </h2>
-    
-    <nav class="titles">
-        <ul>
-            {% for title in title.legislation.titles.all %}
-                <li>
-                    <a href="{% url title_detail title.legislation.slug, title.number %}">
-                        <b>Title {{ title.roman_number }}</b>
-                        {{ title.name }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </nav>
-    
-    <section class="markup">
-    
-        <h3 class="title-name">Title {{ title.roman_number }} - {{ title.name }}</h3>
-        
-        <p class="legislation-meta">
-            {% with title.legislation.get_sections_comment_count as section_comment_count %}
-                {% if not title.legislation.allow_comments %}
-                    <span class="nocomment">The public comment period for this legislation has ended.</span>
-                {% endif %}
-                <a href="#title-outline">{{ section_comment_count }}</a> section comment{{ section_comment_count|pluralize }}
-            {% endwith %}
-        </p>
-        
-        <div class="justification">
-            
-            <nav class="sections">
-                {% with title.sections.all as sections %}
-                    {% if sections %}
-                        <ol>
-                            {% for section in sections %}
-                                <li>
-                                    <a href="#section_{{ section.number }}">
-                                        <strong>Sec. {{ section.number }}.</strong> {{ section.name }}
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ol>
-                    {% endif %}
-                {% endwith %}
-            </nav>
-            
-            {% if title.summary %}
-                <h3>Summary:</h3>
-                {% autoescape off %}{{ title.summary|urlizetrunc:"40" }}{% endautoescape %}
+{% block markupmeta %}
+    <p class="legislation-meta">
+        {% with title.legislation.get_sections_comment_count as section_comment_count %}
+            {% if not title.legislation.allow_comments %}
+                <span class="nocomment">The public comment period for this legislation has ended.</span>
             {% endif %}
-            {% if title.extra_content %}
-                <h3>Additional Information:</h3>
-                {% autoescape off %}{{ title.extra_content|urlizetrunc:"40" }}{% endautoescape %}
-            {% endif %}
-            
-            <div class="clear"></div>
-            
-        </div>
+            <a href="#title-outline">{{ section_comment_count }}</a> section comment{{ section_comment_count|pluralize }}
+        {% endwith %}
+    </p>
+{% endblock %}
+
+{% block markupdetails %}
+    
+    {% if title.summary %}
+        <h3>Summary:</h3>
+        {% autoescape off %}{{ title.summary|urlizetrunc:"40" }}{% endautoescape %}
+    {% endif %}
+    {% if title.extra_content %}
+        <h3>Additional Information:</h3>
+        {% autoescape off %}{{ title.extra_content|urlizetrunc:"40" }}{% endautoescape %}
+    {% endif %}
+    
+{% endblock %}
+
+{% block markupcontent %}
         
         <!-- the sections and corresponding comments. -->
         {% if title.sections %}
