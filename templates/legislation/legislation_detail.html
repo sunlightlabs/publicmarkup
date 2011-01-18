@@ -1,5 +1,6 @@
 {% extends "index.html" %}
 {% load comments %}
+{% load markup %}
 
 {% block title %} - {{ legislation }}{% endblock %}
 {% block head %}
@@ -32,7 +33,7 @@
 							 
 							</h2>
 							
-							<div id="legislation_justification">{% autoescape off %}{{ legislation.summary|urlizetrunc:"40" }}{% endautoescape %}</div>
+							<div id="legislation_justification">{% autoescape off %}{{ legislation.summary|markdown|urlizetrunc:"40" }}{% endautoescape %}</div>
 							
 						</div>
 					</div>

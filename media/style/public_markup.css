@@ -113,11 +113,7 @@ color: #666;
 /***** ERROR Page  *****/
 
 #error {margin-left:auto; margin-right:auto; margin-top:5em; width:50%; text-align:center;}
-
-.error { color:#ba2725; font-size:167%; }
-
 .emerson { font-size:131%; color:#092545; }
-
 
 /***** Front Page  *****/
 
@@ -789,3 +785,10 @@ background: #666;
 
 
 /* end bill subnav */
+
+#comment-form ul { list-style: none; margin: 0; padding: 0; }
+#comment-form ul li { clear: both; margin: 5px 0; }
+#comment-form label { display: block; float: left; padding-top: 3px; width: 120px; }
+#comment-form label[for=id_humanity_answer] { width: 240px; }
+#comment-form p.submit { margin-top: 15px; }
+#comment-form ul.errorlist { color: #F00; font-weight: bold; }

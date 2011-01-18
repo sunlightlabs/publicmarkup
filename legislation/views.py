@@ -29,12 +29,18 @@ def legislation_detail(request, legislation_slug):
     
     if request.method == 'POST':
         human_form = HumanityForm(request.POST, label_suffix='')
-        if human_form.is_valid():
+        is_human = request.POST.get('humanity', 'robot') == 'human'
+        if is_human or human_form.is_valid():
             return post_comment(request)
     else:
         human_form = HumanityForm(label_suffix='')
     
-    return render_to_response("legislation/legislation_detail.html", locals(),
+    data = {
+        'legislation': legislation,
+        'human_form': human_form,
+    }
+    
+    return render_to_response("legislation/legislation_detail.html", data,
                               context_instance=RequestContext(request))
 
 def title_detail(request, legislation_slug, title_num):
