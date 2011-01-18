@@ -49,7 +49,15 @@ def title_detail(request, legislation_slug, title_num):
                               context_instance=RequestContext(request))
     
 def section_detail(request, legislation_slug, title_num, section_num):
-    human_form = HumanityForm(label_suffix='')
+    
+    if request.method == 'POST':
+        human_form = HumanityForm(request.POST, label_suffix='')
+        is_human = request.POST.get('humanity', 'robot') == 'human'
+        if is_human or human_form.is_valid():
+            return post_comment(request)
+    else:
+        human_form = HumanityForm(label_suffix='')
+    
     section_num = int(section_num)
     section = Section.objects.get(number=section_num, title__number=title_num, title__legislation__slug=legislation_slug)
     try:

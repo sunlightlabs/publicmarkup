@@ -2,7 +2,15 @@
 
 <form action="#comment-form" method="post" id="comment-form">
     {% csrf_token %}
-    {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+    {% if next %}
+        <input type="hidden" name="next" value="{{ next }}" />
+    {% else %}
+        {% if section %}
+            <input type="hidden" name="next" value="{{ section.get_absolute_url }}#last_comment" />
+        {% else %}
+            <input type="hidden" name="next" value="{{ legislation.get_absolute_url }}#last_comment" />
+        {% endif %}
+    {% endif %}
     {% for field in form.hidden_fields %}
         {{ field }}
     {% endfor %}
