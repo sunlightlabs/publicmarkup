@@ -83,6 +83,7 @@ INSTALLED_APPS = (
     'django.contrib.comments',
     'mediasync',
     'publicmarkup.legislation',
+    'gunicorn',
 )
 
 EMAIL_BACKEND = 'postmark.django_backend.EmailBackend'

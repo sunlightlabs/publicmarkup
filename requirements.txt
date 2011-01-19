@@ -7,3 +7,4 @@ textile
 -e git://github.com/jcarbaugh/django-humanity.git#egg=humanity
 -e git://github.com/jcarbaugh/python-serpente.git#egg=serpente
 python-postmark
+gunicorn
