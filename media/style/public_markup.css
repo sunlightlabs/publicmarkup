@@ -123,6 +123,9 @@ h3 { font-size: 170%; font-family: Georgia, "Times New Roman", Times, serif; mar
 h3.title-name { color: #333; font-size: 170%; }
 p.legislation-meta { margin: 5px 0 30px; font-family: Georgia, "Times New Roman", Times, serif; font-style: oblique; }
 
+#ltColumn { width: 605px; text-align: left;}
+#ltColumn h2 { margin-bottom: 30px; }
+
 /*
  * main title navigation
  */ 
