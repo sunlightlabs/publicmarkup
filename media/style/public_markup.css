@@ -1,39 +1,117 @@
-html { font-size: 80%; margin: 0; padding: 0; }
-body {
-    font-family: Helvetica, sans-serif;
-    margin: 0;
-    text-align: center;
-}
+/*  HTML5 ✰ Boilerplate  */
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,  footer, header, hgroup, 
+menu, nav, section, summary, time, mark, audio, video {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  vertical-align:baseline;
+  background:transparent;
+}                  
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+ul { list-style: none; }
+blockquote, q { 
+	background:url('../images/quotes.png') 12px top no-repeat ;
+	quotes: '»' '«' ;
+	margin-left:30px;
+    padding-left:35px;
+    border-left: 1px solid #E5E4DB;
+	color: #726B68; }
+	
+.pull_left, .pull_right { 
+	background:url('../images/quotes.png') 12px top no-repeat ;
+	margin-left:30px;
+	padding-left:35px;
+	margin-right: 65px;
+	color: #726B68;
+	font-family: Georgia, "Times New Roman", Times, serif; 
+	font-style: oblique; 
+	font-size: 130%; 
+	display: block;
+	line-height: 2;
+	}
+	
+blockquote:before, blockquote:after,
+q:before, q:after { content:''; content:none; }
+
+a { margin:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent; }
+ins { background-color:#ff9; color:#000; text-decoration:none; }
+mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+del { text-decoration: line-through; }
+abbr[title], dfn[title] { border-bottom:1px dotted; cursor:help; }
+table { border-collapse:collapse; border-spacing:0; }
+hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0; }
+input, select { vertical-align:middle; }
+
+body { color: #494442; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; line-height: 22px; font-size: 13px; background-color: #f5f5ee;} 
+select, input, textarea, button { font: 99% sans-serif; }
+button.disabled { opacity: 0.3; filter: alpha(opacity=30); -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)"; }
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+p { margin-bottom: 1em;}
+
+a:hover, a:active { outline: none; }
+a, a:active, a:visited { color: #2f4867; }
+a:hover { color: #15283f; }
 
 .clear { clear: both; }
 
-a, a:visited, a:active { color: #5F728C; }
+html { font-size: 80%; margin: 0; padding: 0; }
+nav ul, nav li { margin: 0; } 
+small { font-size: 85%; }
+strong, th, b { font-weight: bold; }
+td, td img { vertical-align: top; } 
+sub { vertical-align: sub; font-size: smaller; line-height:1px;}
+sup { vertical-align: super; font-size: smaller; }
+pre {  padding: 15px;  white-space: pre;  white-space: pre-wrap;  white-space: pre-line;  word-wrap: break-word; }
+textarea { overflow: auto; } 
+.ie6 legend, .ie7 legend { margin-left: -7px; } 
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.ie7 input[type="checkbox"] { vertical-align: baseline; }
+.ie6 input { vertical-align: text-bottom; }
+label, input[type=button], input[type=submit] { cursor: pointer; }
+button, input, select, textarea { margin: 0; }
+input:invalid, textarea:invalid { border-radius: 1px;  -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red;  box-shadow: 0px 0px 5px red; }
+.no-boxshadow input:invalid, 
+.no-boxshadow textarea:invalid { background-color: #f0dddd; }
 
-/* main layout styles */
+header, footer, #pageMain { margin: 0 auto; width: 940px; padding: 0 10px; display: block;}
+header { background: url(../images/bg_header.jpg) center bottom no-repeat; height: 150px; margin-bottom: 50px; margin-top: 15px;}
 
-#container {
-    margin: 0 auto;
-    text-align: left;
-    width: 960px;
-}
+h1 { width: 265px; height: 79px; float: left; padding-top: 35px;}
+h1 a { text-indent: -9999em; display: block; width: 265px; height: 79px; background: url(../images/logo.png) top left no-repeat;}
 
-header[role=banner] {
-    background-color: #5F728C;
-    margin-bottom: 0.2em;
-    padding: 1em;
-}
-header[role=banner] h1 {
-    font-family: Neuton;
-    margin: 0;
-    padding: 0;
-}
+#signup { float: right; width: 430px; padding-top: 23px; text-align: right;}
+#signup label { font-size: 92%; line-height: 18px; margin-bottom: 10px; display: block; text-align: right; }
+
+input { border: 1px solid #e3e2dd; padding: 3px 5px; color: #8e8987;} 
+
+#featureTitle { font-size: 220%; line-height: 40px; font-family: Georgia, "Times New Roman", Times, serif; width: 750px; font-style: oblique; color: #4c4242; display: block; padding: 0 95px;}
+#featureDescription { background: url(../images/line.jpg) center bottom repeat-x; padding-bottom: 30px; margin-bottom: 30px;}
+
+#currentBills li { float: left; width: 470px;}
+
+footer { margin-top: 80px;}
+footer nav li { display: inline;}
+footer nav li a { text-transform: uppercase; text-decoration: none;}
+footer nav { margin-top: -30px; border-top: 10px solid; border-bottom: 2px solid #d3d0cd; padding: 8px 0 8px;}
+#navAbout { border-right: 1px dashed #d3d0cd; padding-right: 20px; margin-right: 20px;}
+
+#footerDetails { padding-top: 20px;}
+a#foundationlogo { text-indent: -9999em; display: block; background: url(../images/sfLogo.png) center top no-repeat; width: 135px; height: 64px; float: left; margin-right: 15px; padding-right: 15px; border-right: 1px dashed #d3d0cd; }
+#privacyPolicy { float: left; width: 700px; font-size: 92%; font-family: Georgia, "Times New Roman", Times, serif; font-style: oblique; text-align: left; line-height: 18px; margin-top: 10px;}
 
 /* tite styles */
 
-h2.legislation-name { margin: 2em 0; }
+h2 { font-size: 200%; font-family: Georgia, "Times New Roman", Times, serif;}
+
 h2.legislation-name a {
-    color: #000;
-    font-size: 160%;
     text-decoration: none;
 }
 h2.legislation-name a:hover { color: #5F728C; }
@@ -43,8 +121,9 @@ h3.title-name {
     font-size: 170%;
 }
 p.legislation-meta {
-    margin-top: 0;
-    padding: 0.2em 0.2em;
+    margin: 5px 0 30px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-style: oblique;
 }
 
 /*
@@ -52,10 +131,11 @@ p.legislation-meta {
  */ 
 
 nav.titles {
-    border-bottom: 2px solid #444;
-    border-top: 2px solid #444;
+    border-bottom: 2px solid #8c8885;
+    border-top: 2px solid #8c8885;
     float: left;
-    width: 250px;
+    width: 215px;
+    margin-right: 15px;
 }
 nav.titles ol { list-style: none; margin: 0; padding: 0; }
 nav.titles ol ol { margin-left: 1em; }
@@ -76,9 +156,12 @@ nav.titles a b { color: #000; display: block; }
 /* main section container */
 
 section.markup {
-    float: right;
-    width: 690px;
+    float: left;
+    width: 695px;
+    margin-left: 15px;
+    text-align: left;
 }
+
 span.nocomment {
     background-color: #953931;
     color: #FFF;
@@ -90,10 +173,11 @@ span.nocomment {
 }
 
 div.markup-details {
-    background-color: #F1F8EA;
-    font-family: Neuton;
+    background-color: #ebe9e5;
+    border: 1px solid #dbd9d4;
 	line-height: 150%;
-    padding: 1em 2em;
+    padding: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
 }
 div.markup-details p { margin-bottom: 1em; }
 

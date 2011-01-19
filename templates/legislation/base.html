@@ -5,7 +5,7 @@
     <h2 class="legislation-name">
         <a href="{{ legislation.get_absolute_url }}">{{ legislation }}</a>
     </h2>
-
+    {% block markupmeta %}{% endblock %}
     <nav class="titles">
         <ol>
             {% for leg_title in legislation.titles.all %}
@@ -34,8 +34,6 @@
         
         {% block markuphead %}{% endblock %}
         
-        {% block markupmeta %}{% endblock %}
-        
         <div class="markup-details">
             
             {% block markupdetails %}{% endblock %}
@@ -47,5 +45,5 @@
         {% block markupcontent %}{% endblock %}
 
     </section>
-
+    <div class="clear"></div>
 {% endblock %}
