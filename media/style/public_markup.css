@@ -57,7 +57,7 @@ p { margin-bottom: 1em;}
 
 a:hover, a:active { outline: none; }
 a, a:active, a:visited { color: #2f4867; }
-a:hover { color: #15283f; }
+a:hover { color: #5F728C; }
 
 .clear { clear: both; }
 
@@ -81,8 +81,8 @@ input:invalid, textarea:invalid { border-radius: 1px;  -moz-box-shadow: 0px 0px 
 .no-boxshadow input:invalid, 
 .no-boxshadow textarea:invalid { background-color: #f0dddd; }
 
-header, footer, #pageMain { margin: 0 auto; width: 940px; padding: 0 10px; display: block;}
-header { background: url(../images/bg_header.jpg) center bottom no-repeat; height: 150px; margin-bottom: 50px; margin-top: 15px;}
+header#mainHeader, footer, #pageMain { margin: 0 auto; width: 940px; padding: 0 10px; display: block;}
+header#mainHeader { background: url(../images/bg_header.jpg) center bottom no-repeat; height: 150px; margin-bottom: 50px; margin-top: 15px;}
 
 h1 { width: 265px; height: 79px; float: left; padding-top: 35px;}
 h1 a { text-indent: -9999em; display: block; width: 265px; height: 79px; background: url(../images/logo.png) top left no-repeat;}
@@ -97,7 +97,7 @@ input { border: 1px solid #e3e2dd; padding: 3px 5px; color: #8e8987;}
 
 #currentBills li { float: left; width: 470px;}
 
-footer { margin-top: 80px;}
+footer { margin-top: 80px; margin-bottom: 30px;}
 footer nav li { display: inline;}
 footer nav li a { text-transform: uppercase; text-decoration: none;}
 footer nav { margin-top: -30px; border-top: 10px solid; border-bottom: 2px solid #d3d0cd; padding: 8px 0 8px;}
@@ -110,21 +110,11 @@ a#foundationlogo { text-indent: -9999em; display: block; background: url(../imag
 /* tite styles */
 
 h2 { font-size: 200%; font-family: Georgia, "Times New Roman", Times, serif;}
+h2.legislation-name a { text-decoration: none; }
 
-h2.legislation-name a {
-    text-decoration: none;
-}
-h2.legislation-name a:hover { color: #5F728C; }
-h3 { margin: 0 0 1em 0; }
-h3.title-name {
-    color: #333;
-    font-size: 170%;
-}
-p.legislation-meta {
-    margin: 5px 0 30px;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-style: oblique;
-}
+h3 { font-size: 170%; font-family: Georgia, "Times New Roman", Times, serif; margin-bottom: 25px; line-height: 30px; width: 600px;}
+h3.title-name { color: #333; font-size: 170%; }
+p.legislation-meta { margin: 5px 0 30px; font-family: Georgia, "Times New Roman", Times, serif; font-style: oblique; }
 
 /*
  * main title navigation
@@ -193,18 +183,9 @@ ol.section-outline li { margin-bottom: 0.8em; }
 
 
 section.comments { margin-left: 1em; }
-section.comments article { margin: 2em 0; }
 section.comments header { margin-bottom: 0.3em; }
 section.comments header a { color: #333; text-decoration: none; }
 section.comments header a:hover { color: #5F728C; }
-section.comments div.comment {
-    background-color: #F1F8EA;
-    color: #333;
-    display: block;
-    font-family: Neuton;
-    padding: 1em;
-    text-decoration: none;
-}
 
 article.section { background-color: #F1F8EA; clear: both; }
 article.section aside {
@@ -214,6 +195,10 @@ article.section aside {
     padding: 1em;
     width: 240px;
 }
+
+article { background: url(../images/line.jpg) center bottom repeat-x; margin-bottom: 20px; padding-bottom: 20px; color: #797171;}
+article header { font-family: Georgia, "Times New Roman", Times, serif; font-size: 110%;}
+#comments { margin-top: 80px;}
 
 article.section h4 { border-bottom: 1px solid #000; padding: 1em; }
 article.section h4 a { text-decoration: none; }
