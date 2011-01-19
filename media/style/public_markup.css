@@ -160,13 +160,14 @@ section.markup {
 }
 
 span.nocomment {
-    background-color: #953931;
+    background-color: #e89984;
     color: #FFF;
-    float: right;
     padding: 5px 15px;
-       -moz-border-radius: 10px; /* FF1+ */
-    -webkit-border-radius: 10px; /* Saf3-4 */
-            border-radius: 10px; /* Opera 10.5, IE9, Saf5, Chrome */;
+    border: 1px solid #e36544;
+    display: block;
+    margin-bottom: 30px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-style: oblique;
 }
 
 div.markup-details {

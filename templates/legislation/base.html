@@ -1,7 +1,9 @@
 {% extends "index.html" %}
 
 {% block content %}
-    
+    {% if not legislation.allow_comments %}
+        <span class="nocomment">The public comment period for this legislation has ended.</span>
+    {% endif %}
     <h2 class="legislation-name">
         <a href="{{ legislation.get_absolute_url }}">{{ legislation }}</a>
     </h2>

@@ -16,9 +16,6 @@
 {% block markupmeta %}
     <p class="legislation-meta">
         {% with title.legislation.get_sections_comment_count as section_comment_count %}
-            {% if not title.legislation.allow_comments %}
-                <span class="nocomment">The public comment period for this legislation has ended.</span>
-            {% endif %}
             <a href="#title-outline">{{ section_comment_count }}</a> section comment{{ section_comment_count|pluralize }}
         {% endwith %}
     </p>
