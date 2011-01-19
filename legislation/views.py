@@ -13,7 +13,7 @@ def index(*args, **kwargs):
     return object_list(*args, **kwargs)
 
 def bill(request):
-    legislation = Legislation.objects.get(pk=1)
+    legislation = Legislation.objects.order_by('-id')[0]
     return HttpResponseRedirect(legislation.get_absolute_url())
 
 def legislation_print(request, legislation_slug):
