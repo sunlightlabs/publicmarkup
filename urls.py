@@ -13,6 +13,11 @@ urlpatterns = patterns('',
     url(r'^', include('publicmarkup.legislation.urls')),
 )
 
+urlpatterns += patterns('django.views.generic.simple',
+    url(r'^about/$', 'direct_to_template', {'template': 'about.html'}),
+    url(r'^contact/$', 'direct_to_template', {'template': 'contact.html'}),
+)
+
 urlpatterns += patterns('django.contrib.auth.views',
     url(r'^login/$', 'login', {'template_name': 'login.html'}, name="login"),
     url(r'^logout/$', 'logout_then_login', name="logout"),
