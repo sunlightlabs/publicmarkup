@@ -1,7 +1,8 @@
 {% extends "index.html" %}
-
 {% load comments %}
 {% load htmlhelper %}
+{% load markup %}
+
 {% block title %} - {{ title }} - {{ title.legislation }}{% endblock %}
 {% block head %}
 	<link rel="alternate" type="application/rss+xml" title="Comments on {{ title.legislation.name }}" href="http://publicmarkup.org/feed/comments/{{ title.legislation.slug }}/" />
@@ -28,7 +29,7 @@
 							<div id="title_summary">
 								{% if title.summary %}
 									<h3>Summary:</h3>
-									<div class="indent">{% autoescape off %}{{ title.summary|urlizetrunc:"40" }}{% endautoescape %}</div>
+									<div class="indent">{% autoescape off %}{{ title.summary|markdown|urlizetrunc:"40" }}{% endautoescape %}</div>
 									<br />
 								{% endif %}
 								{% if title.extra_content %}
