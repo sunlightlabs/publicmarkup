@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load media %}
 
 {% block content %}
     <div id="featureDescription">
         <span id="featureTitle">Review and comment on proposed bills before they're introduced—or while they're pending—in Congress.</span>
-        <span>Click on one of the open bills below to participate</span>
+        <span id="featureAction">Click on one of the open bills below to participate</span>
     </div>
     <div id="currentBills">
         <h3>Legislation currently available for "Public Markup"</h3>
@@ -11,7 +12,8 @@
             {% for legislation in object_list %}
             <li><a href="{% url legislation_detail legislation.slug %}" title="{{ legislation }}">{{ legislation }}</a></li>
             {% endfor %}
-        </ul>    
+        </ul> 
+        <img alt="papers" src={% media_url "images/img_papers.png" %} />   
         <div class="clear"></div>
     </div>    
     
