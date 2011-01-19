@@ -1,13 +1,8 @@
-body {
-	background-color: #2D1C14;
-	font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
-	text-align: center;
-}
 h2 { font-size: 108%; font-weight: bold; color: #333; }
 h3 { font-size: 131%; font-weight: bold; color: #933; }
 h4 { font-size: 123.1%; font-weight: bold; color: #333; margin: 10px 0;}
 h4 a { color: #333; text-decoration: none; }
-#container { background-color: #fff; margin: 0 auto; text-align: left; width: 980px; }
+
 #content { padding: 15px; }
 .clear {
 	display:inline-block;
