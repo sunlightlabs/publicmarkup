@@ -84,6 +84,8 @@ input:invalid, textarea:invalid { border-radius: 1px;  -moz-box-shadow: 0px 0px 
 header#mainHeader, footer, #pageMain { margin: 0 auto; width: 940px; padding: 0 10px; display: block;}
 header#mainHeader { background: url(../images/bg_header.jpg) center bottom no-repeat; height: 150px; margin-bottom: 50px; margin-top: 15px;}
 
+.tip { color: #797171; font-family: Georgia, "Times New Roman", Times, serif; font-style: oblique; font-size: 95%; margin-bottom: 20px; line-height: 18px;}
+
 h1 { width: 265px; height: 79px; float: left; padding-top: 35px;}
 h1 a { text-indent: -9999em; display: block; width: 265px; height: 79px; background: url(../images/logo.png) top left no-repeat;}
 
@@ -97,7 +99,7 @@ input { border: 1px solid #e3e2dd; padding: 3px 5px; color: #8e8987;}
 
 #currentBills li { float: left; width: 470px;}
 
-footer { margin-top: 80px; margin-bottom: 30px;}
+footer { margin-top: 80px; margin-bottom: 30px; background: url(../images/bg_gradient.jpg) center 11px no-repeat;}
 footer nav li { display: inline;}
 footer nav li a { text-transform: uppercase; text-decoration: none;}
 footer nav { margin-top: -30px; border-top: 10px solid; border-bottom: 2px solid #d3d0cd; padding: 8px 0 8px;}
@@ -113,6 +115,7 @@ h2 { font-size: 200%; font-family: Georgia, "Times New Roman", Times, serif;}
 h2.legislation-name a { text-decoration: none; }
 
 h3 { font-size: 170%; font-family: Georgia, "Times New Roman", Times, serif; margin-bottom: 25px; line-height: 30px; width: 600px;}
+.withTip { margin-bottom: 5px;}
 h3.title-name { color: #333; font-size: 170%; }
 p.legislation-meta { margin: 5px 0 30px; font-family: Georgia, "Times New Roman", Times, serif; font-style: oblique; }
 
@@ -128,7 +131,7 @@ nav.titles {
     margin-right: 15px;
 }
 nav.titles ol { list-style: none; margin: 0; padding: 0; }
-nav.titles ol ol { margin-left: 1em; }
+nav.titles ol ol a { background-color: #edece8; }
 nav.titles li { border-bottom: 1px solid #CCC; }
 nav.titles li:last-child { border-bottom: 0; }
 nav.titles a {
@@ -214,9 +217,6 @@ article.section div.section-text li { margin: 0; padding: 0; }
 article.section div.section-text ol li { list-style: lower-alpha outside; }
 article.section div.section-text ol ol li { list-style: decimal outside; }
 
-article.section div.section-comments {
-    
-}
 article.section div.section-comments h5 { font-size: 120%; margin: 0.3em 0 1em; }
 article.section div.section-comments ol { list-style: none; padding: 0; }
 article.section div.section-comments ol a {
@@ -228,9 +228,17 @@ article.section div.section-comments ol a:hover { color: #333; }
 /*
  * forms
  */
-form ul { list-style: none; margin: 0; padding: 0; }
-form ul li { clear: both; }
-form ul li.hidden { display: none; }
+#comment-form li { border-bottom: 1px dashed #c5cbcc; width: 600px; }
+#comment-form label {  padding: 10px 0;}
+#comment-form input, #comment-form textarea { background-color: #E7E7E3; border: 1px solid #E7E7E3; width: 300px; padding: 13px 15px; border-left: 1px solid #c5cbcc;}
+#comment-form .buttonli { border-bottom: none;}
+#comment_box { background-color: #e7e7e3; padding: 20px; border: 1px solid #c5cbcc;}
+
+#comment-form #previewBtn { float: left;}
+#comment-form #previewBtn, #comment-form #postBtn { margin-top: 30px; width: auto;}
+
+.hidden { display: none;}
+
 form ul li label {
 	display: block;
 	float: left;
@@ -238,3 +246,4 @@ form ul li label {
 	width: 120px;
 }
 form ul li label[for=id_humanity_answer] { width: 240px; }
+#testForm { background-color: #d8d8d4; padding: 5px 10px;}

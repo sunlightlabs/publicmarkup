@@ -15,10 +15,19 @@
                 {{ field }}
             </li>
         {% endfor %}
-        {{ human_form.as_ul }}
+            <li id="testForm">
+                {{ human_form }}
+            </li>    
+            <li id="previewBtn" class="buttonli">
+                <button type="submit" name="preview" class="submit-preview">
+                    <span>Preview</span>
+                </button>
+            </li>    
+            <li id="postBtn" class="buttonli">
+                <button type="submit" name="post" class="submit-post">
+                    <span>Post</span>
+                </button>
+            </li>    
     </ul>
-    <p class="submit">
-        <input type="submit" name="post" class="submit-post" value="{% trans "Post" %}" />
-        <input type="submit" name="preview" class="submit-preview" value="{% trans "Preview" %}" />
-    </p>
+    
 </form>

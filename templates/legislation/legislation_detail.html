@@ -76,8 +76,8 @@
 
     {% if legislation.allow_comments %}
         <div id="comment_box">
-            <h3>Comment on {{ legislation }}:</h3>
-            <p class="comment_disclaimer_leg">(You are commenting on this legislation as a whole. Comments on a specific section of the bill should be left within that section)</p>
+            <h3 class="withTip">Comment on {{ legislation }}:</h3>
+            <p class="tip">(You are commenting on this legislation as a whole. Comments on a specific section of the bill should be left within that section)</p>
             {% render_comment_form for legislation.legislation legislation.id %}
         </div>
     {% endif %}

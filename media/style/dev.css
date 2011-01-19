@@ -4,9 +4,7 @@ h4 { font-size: 123.1%; font-weight: bold; color: #333; margin: 10px 0;}
 h4 a { color: #333; text-decoration: none; }
 
 #content { padding: 15px; }
-.clear {
-	display:inline-block;
-}
+
 .clear:after {
 	display:block; 
 	visibility:hidden; 
