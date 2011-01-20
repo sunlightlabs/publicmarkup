@@ -198,13 +198,16 @@ section.comments header { margin-bottom: 0.3em; }
 section.comments header a { color: #333; text-decoration: none; }
 section.comments header a:hover { color: #5F728C; }
 
-article.section { background-color: #F1F8EA; clear: both; }
+
+article.section { clear: both; }
 article.section aside {
     float: right;
     font-size: 85%;
     margin: 0 0 4em 4em;
     padding: 1em;
     width: 240px;
+    background-color: #E7E7E3;
+    border: 1px solid #C5CBCC;
 }
 
 article { background: url(../images/line.jpg) center bottom repeat-x; margin-bottom: 20px; padding-bottom: 20px; color: #797171;}
@@ -215,7 +218,7 @@ article.section h4 { border-bottom: 1px solid #000; padding: 1em; }
 article.section h4 a { text-decoration: none; }
 
 article.section div.section-text {
-    font-family: Neuton;
+    font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 90%;
     padding: 0.5em 2em;
 }
@@ -244,6 +247,7 @@ article.section div.section-comments ol a:hover { color: #333; }
 
 #comment-form #previewBtn { float: left;}
 #comment-form #previewBtn, #comment-form #postBtn { margin-top: 30px; width: auto;}
+#comment-form #postBtn { margin-left: 15px; float: left;}
 
 .hidden { display: none;}
 
@@ -255,3 +259,13 @@ form ul li label {
 }
 form ul li label[for=id_humanity_answer] { width: 240px; }
 #testForm { background-color: #d8d8d4; padding: 5px 10px;}
+
+button { text-indent: -9999em; display: block; cursor: pointer; border: none;}
+#signupBtn { background: url(../images/btn_signup.png) top left no-repeat; width: 84px; height: 22px; float: right; margin-left: 15px; margin-top:2px;}
+#signupBtn:hover { background: url(../images/btn_signup.png) bottom left no-repeat; }
+.sendbutton { background: url(../images/btn_send.png) top left no-repeat; width: 81px; height: 37px; margin-top: 30px;}
+.sendbutton:hover { background: url(../images/btn_send.png) bottom left no-repeat; }
+.submit-preview { background: url(../images/btn_preview.png) top left no-repeat; width: 118px; height: 37px;}
+.submit-preview:hover { background: url(../images/btn_preview.png) bottom left no-repeat; }
+.submit-post { background: url(../images/btn_post.png) top left no-repeat; width: 81px; height: 37px; }
+.submit-post:hover { background: url(../images/btn_post.png) bottom left no-repeat; }
