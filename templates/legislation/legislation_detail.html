@@ -8,6 +8,13 @@
     <link rel="alternate" type="application/rss+xml" title="Comments on {{ legislation.name }}" href="http://publicmarkup.org/feed/comments/{{ legislation.slug }}/" />
 {% endblock %}
 
+{% block opengraph %}
+    <meta property="og:title" content="{{ legislation }}">
+    <meta property="og:description" content="{{ legislation.summary|truncatewords:50 }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://publicmarkup.org{{ legislation.get_absolute_url }}">
+{% endblock %}
+
 {% block markupmeta %}
     {% get_comment_count for legislation.legislation legislation.id as comment_count %}
     <p class="legislation-meta">

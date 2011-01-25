@@ -5,20 +5,10 @@
 {% block content %}
 <div id="ltColumn">
     <h2>Contact Us</h2>
-    <form id="comment_box" action="." method="get">
+    <form id="comment_box" action="/contact/" method="post">
+        {% csrf_token %}
         <ul id="comment-form">
-            <li>
-                <label for="id_name">Name</label>
-                <input type="name" name="name" id="id_name">
-            </li>    
-            <li>
-                <label for="id_email">Email</label>
-                <input type="email" name="email" id="id_email">
-            </li>
-            <li>
-                <label for="id_comment">Comment</label>
-                <textarea class="textarea" name="text" cols="32" rows="5"></textarea>
-            </li>
+            {{ form.as_ul }}
             <li class="buttonli">
 		        <button class="sendbutton" type="submit">
     				<span>Send</span>

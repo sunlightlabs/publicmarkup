@@ -173,6 +173,17 @@ span.nocomment {
     font-style: oblique;
 }
 
+ul.messages li {
+	background-color: #BD3;
+    color: #000;
+    padding: 5px 15px;
+    border: 1px solid #9B1;
+    display: block;
+    margin-bottom: 30px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-style: oblique;
+}
+
 div.markup-details {
     background-color: #ebe9e5;
     border: 1px solid #dbd9d4;
@@ -217,16 +228,19 @@ article header { font-family: Georgia, "Times New Roman", Times, serif; font-siz
 article.section h4 { border-bottom: 1px solid #000; padding: 1em; }
 article.section h4 a { text-decoration: none; }
 
-article.section div.section-text {
+div.section-text {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 90%;
     padding: 0.5em 2em;
 }
-article.section div.section-text p { margin: 0 0 1em 0; padding: 0; }
-article.section div.section-text ol { padding: 0 0 0 2em; }
-article.section div.section-text li { margin: 0; padding: 0; }
-article.section div.section-text ol li { list-style: lower-alpha outside; }
-article.section div.section-text ol ol li { list-style: decimal outside; }
+div.section-text p { margin: 0 0 1em 0; padding: 0; }
+div.section-text ol { padding: 0 0 0 2em; }
+div.section-text li { margin: 0; padding: 0; }
+div.section-text ol li { list-style: lower-alpha outside; }
+div.section-text ol ol li { list-style: decimal outside; }
+div.section-text ol ol ol li { list-style: upper-alpha outside; }
+div.section-text ol ol ol ol li { list-style: lower-roman outside; }
+div.section-text ol ol ol ol ol li { list-style: upper-roman outside; }
 
 article.section div.section-comments h5 { font-size: 120%; margin: 0.3em 0 1em; }
 article.section div.section-comments ol { list-style: none; padding: 0; }
@@ -241,13 +255,13 @@ article.section div.section-comments ol a:hover { color: #333; }
  */
 #comment-form li { border-bottom: 1px dashed #c5cbcc; width: 550px; }
 #comment-form label {  padding: 10px 0;}
-#comment-form input, #comment-form textarea { background-color: #E7E7E3; border: 1px solid #E7E7E3; width: 300px; padding: 13px 15px; border-left: 1px solid #c5cbcc;}
+#comment-form input, #comment-form textarea { background-color: #E7E7E3; border: 1px solid #E7E7E3; width: 375px; padding: 13px 15px; border-left: 1px solid #c5cbcc;}
 #comment-form .buttonli { border-bottom: none;}
-#comment_box { background-color: #e7e7e3; padding: 20px; border: 1px solid #c5cbcc; margin-bottom: 30px;}
+#comment_box { background-color: #e7e7e3; padding: 20px; border: 1px solid #c5cbcc; margin: 10px 0 30px 0; width: 653px; }
 
 #comment-form #previewBtn { float: left;}
 #comment-form #previewBtn, #comment-form #postBtn { margin-top: 30px; width: auto;}
-#comment-form #postBtn { margin-left: 15px; float: left;}
+#comment-form #postBtn { margin-left: 15px; float: left; width: 81px; }
 
 .hidden { display: none;}
 
@@ -269,3 +283,6 @@ button { text-indent: -9999em; display: block; cursor: pointer; border: none;}
 .submit-preview:hover { background: url(../images/btn_preview.png) bottom left no-repeat; }
 .submit-post { background: url(../images/btn_post.png) top left no-repeat; width: 81px; height: 37px; }
 .submit-post:hover { background: url(../images/btn_post.png) bottom left no-repeat; }
+
+ul.errorlist { color: #933; font-weight: bold; }
+ul.errorlist li { text-align: left; }

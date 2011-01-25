@@ -9,6 +9,13 @@
     <link rel="alternate" type="application/rss+xml" title="Comments on {{ title.legislation.name }}" href="http://publicmarkup.org/feed/comments/{{ title.legislation.slug }}/" />
 {% endblock %}
 
+{% block opengraph %}
+    <meta property="og:title" content="{{ title }} | {{ legislation }}">
+    <meta property="og:description" content="{{ legislation.summary|truncatewords:50 }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://publicmarkup.org{{ title.get_absolute_url }}">
+{% endblock %}
+
 {% block markuphead %}
     <h3 class="title-name">Title {{ title.roman_number }} - {{ title.name }}</h3>
 {% endblock %}
@@ -50,9 +57,11 @@
                     
                     <aside>
                         
-                        <div class="rationale">
-                            {% autoescape off %}{{ section.summary|urlizetrunc:"40" }}{% endautoescape %}
-                        </div>
+                        {% if section.summary %}
+                            <div class="rationale">
+                                {% autoescape off %}{{ section.summary|urlizetrunc:"40" }}{% endautoescape %}
+                            </div>
+                        {% endif %}
                         
                         <div class="section-comments">
                             

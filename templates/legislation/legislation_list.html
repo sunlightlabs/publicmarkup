@@ -2,6 +2,13 @@
 {% load media %}
 
 {% block content %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <div id="featureDescription">
         <span id="featureTitle">Review and comment on proposed bills before they're introduced—or while they're pending—in Congress.</span>
         <span id="featureAction">Click on one of the open bills below to participate</span>

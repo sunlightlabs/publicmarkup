@@ -8,6 +8,13 @@
 	<link rel="alternate" type="application/rss+xml" title="Comments on {{ section.title.legislation.name }}" href="http://publicmarkup.org/feed/comments/{{ section.title.legislation.slug }}/" />
 {% endblock %}
 
+{% block opengraph %}
+    <meta property="og:title" content="{{ section }} | {{ legislation }}">
+    <meta property="og:description" content="{{ legislation.summary|truncatewords:50 }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://publicmarkup.org{{ section.get_absolute_url }}">
+{% endblock %}
+
 {% block markuphead %}
     <h3 class="title-name">Title {{ section.title.roman_number }} - {{ section.title.name }}</h3>
     <h4 class="section-name">{{ section }}</h4>
@@ -24,10 +31,43 @@
     {% if section.summary %}
         {% autoescape off %}{{ section.summary|urlizetrunc:"40" }}{% endautoescape %}
     {% endif %}
-    {% autoescape off %}{{ section.text|textile }}{% endautoescape %}
+    <div class="section-text">
+        {% autoescape off %}{{ section.text|textile }}{% endautoescape %}
+    </div>
 {% endblock %}
 
 {% block markupcontent %}
+
+    {% get_comment_list for legislation.section section.id as comment_list %}
+    {% if comment_list %}
+        <div id="comments">
+            <h3>General Comments on {{ legislation }}</h3>
+            <section class="comments">
+                {% for comment in comment_list %}
+                    <article id="comment_{{ comment.id }}">
+                        <header{% if forloop.last %} id="latest-comment"{% endif %}>
+                            <a href="{{ comment.get_content_object.get_absolute_url }}#comment_{{ comment.id }}">
+                                {{ comment.user_name }} on {{ comment.submit_date|date:"F j, Y" }}
+                            </a>
+                        </header>
+                        <div class="comment">
+                            {{ comment.comment|markdown|urlizetrunc:"40" }}
+                        </div>
+                    </article>
+                {% endfor %}
+                <a name="last_comment"></a>
+            </section>
+        </div>
+    {% endif %}
+
+    {% if legislation.allow_comments %}
+        <div id="comment_box">
+            <h3 class="withTip">Comment on {{ legislation }}:</h3>
+            <p class="tip">(You are commenting on this legislation as a whole. Comments on a specific section of the bill should be left within that section)</p>
+            {% render_comment_form for legislation.section section.id %}
+        </div>
+    {% endif %}
+
 						
                     	{% get_comment_list for legislation.section section.id as comment_list %}
                         {# <div id="section_section_container" class="pale_yellow"> #}

@@ -9,13 +9,14 @@ urlpatterns = patterns('',
     url(r'^comments/postfree/$','publicmarkup.legislation.views.save_free_comment'),
     url(r'^comments/', include('django.contrib.comments.urls')),
     url(r'^comments/', 'publicmarkup.legislation.views.index'),
+    url(r'^contact/$', 'publicmarkup.views.contact'),
+    url(r'^signup/$', 'publicmarkup.views.signup'),
     url(r'^', include('mediasync.urls')),
     url(r'^', include('publicmarkup.legislation.urls')),
 )
 
 urlpatterns += patterns('django.views.generic.simple',
     url(r'^about/$', 'direct_to_template', {'template': 'about.html'}),
-    url(r'^contact/$', 'direct_to_template', {'template': 'contact.html'}),
 )
 
 urlpatterns += patterns('django.contrib.auth.views',

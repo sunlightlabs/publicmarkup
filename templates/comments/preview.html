@@ -1,49 +1,36 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
 {% load comments %}
 {% load i18n %}
 
 {% block title %}{% trans "Preview your comment" %}{% endblock %}
 
 {% block content %}
-<div id="doc4" class="yui-t7">
-		{% include "header.html" %}
-<div id="bd">
 
-<div class="yui-g">
-
-<div id="preview_container">
-    <div id="preview_container_top">
-        <h2>There is a problem with your comment.</h2>
-    </div>
-        <div id="preview_comment_box">
-	        <div id="edit_comment_box">
-	            <form action="#comment-form" method="post" id="comment-form">
-                    {% csrf_token %}
-                    {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
-                    <input type="hidden" name="humanity" value="human" />
-                    {% for field in form.hidden_fields %}
+    <h2>Sorry, we need you to change your comment.</h2>
+    
+    <div id="comment_box">
+        <form action="#comment-form" method="post" id="comment-form">
+            {% csrf_token %}
+            {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+            <input type="hidden" name="humanity" value="human" />
+            {% for field in form.hidden_fields %}
+                {{ field }}
+            {% endfor %}
+            <ul>
+                {% for field in form.visible_fields %}
+                    {% if field.errors %}{{ field.errors }}{% endif %}
+                    <li class="field_{{ field.name}}{% if field.errors %} error{% endif %}"{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+                        {{ field.label_tag }}
                         {{ field }}
-                    {% endfor %}
-                    <ul>
-                        {% for field in form.visible_fields %}
-                            {% if field.errors %}{{ field.errors }}{% endif %}
-                            <li class="field_{{ field.name}}{% if field.errors %} error{% endif %}"{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
-                                {{ field.label_tag }}
-                                {{ field }}
-                            </li>
-                        {% endfor %}
-                        {{ human_form.as_ul }}
-                    </ul>
-                    <p class="submit">
-                        <input type="submit" name="post" class="submit-post" value="Post comment" />
-                    </p>
-                </form>
-            </div>
-	    </div>
-    </div> <!-- end preview_container -->
-</div></div>
-
-{% include "footer.html" %}
-	</div>
+                    </li>
+                {% endfor %}
+                <li id="postBtn" class="buttonli">
+                    <button type="submit" name="post" class="submit-post">
+                        <span>Post</span>
+                    </button>
+                </li>
+            </ul>   
+        </form>
+    </div>
 
 {% endblock %}
