@@ -89,8 +89,13 @@ header#mainHeader { background: url(../images/bg_header.jpg) center bottom no-re
 h1 { width: 265px; height: 79px; float: left; padding-top: 35px;}
 h1 a { text-indent: -9999em; display: block; width: 265px; height: 79px; background: url(../images/logo.png) top left no-repeat;}
 
-#signup { float: right; width: 430px; padding-top: 23px; text-align: right;}
-#signup label { font-size: 92%; line-height: 18px; margin-bottom: 10px; display: block; text-align: right; }
+#sunlightProduct { font-family: Georgia, "Times New Roman", Times, serif; font-style: oblique; font-size: 95%; color: #5f8e97; left: -250px; position: relative; top: -12px;}
+#sunlightProduct a:active, #sunlightProduct a:link, #sunlightProduct a:visited, #sunlightProduct a { color: #5F8E97;}
+#sunlightProduct a:hover { color: #2F4867; }
+
+#signup { float: right; width: 530px; padding-top: 23px; text-align: right; font-family: Georgia, "Times New Roman", Times, serif;}
+#signup label { font-size: 96%; line-height: 20px; margin-bottom: 10px; display: block; text-align: right; }
+#id_zipcode { width: 100px;}
 
 input { border: 1px solid #e3e2dd; padding: 3px 5px; color: #8e8987;} 
 
