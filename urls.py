@@ -5,6 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^about/$', 'publicmarkup.views.about'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^comments/postfree/$','publicmarkup.legislation.views.save_free_comment'),
     url(r'^comments/', include('django.contrib.comments.urls')),
@@ -13,10 +14,6 @@ urlpatterns = patterns('',
     url(r'^signup/$', 'publicmarkup.views.signup'),
     url(r'^', include('mediasync.urls')),
     url(r'^', include('publicmarkup.legislation.urls')),
-)
-
-urlpatterns += patterns('django.views.generic.simple',
-    url(r'^about/$', 'direct_to_template', {'template': 'about.html'}),
 )
 
 urlpatterns += patterns('django.contrib.auth.views',

@@ -4,18 +4,25 @@
 
 {% block content %}
 <div id="ltColumn">
+    
     <h2>About Public Markup</h2>
-    <p>After preparing and drafting a comprehensive piece of legislation, <a href="http://www.sunlightfoundation.com">Sunlight </a> decided that public input and scrutiny would refine the bill and improve its chances of garnering lawmakers' support. Rather than immediately looking for legislators who might sponsor the bill, Sunlight, therefore, created PublicMarkup.org as a place to post the bill, and to allow you to comment on and suggest edits to the substance of the legislation. </p>
-
-    <p>
-    <img src="http://media.publicmarkup.org/images/pdf.png"> <a href="http://media.publicmarkup.org/docs/Transparency_Act_2008_Revised_PublicMarkup.pdf">A PDF of the revised bill</a> is available, as well as the <a href="http://media.publicmarkup.org/docs/Transparency_Act_2008_PublicMarkup.pdf">original version</a>.</p>
-
-    <p>This project is not intended to be the ultimate technical solution to the challenge of drafting legislation online, but an experiment in online collaboration. By collecting legislation, summaries, resources and commentary in a single linkable location, PublicMarkup.org provides a simple, blog-like framework for soliciting feedback on this legislation.</p>
-
-    <p>In addition to drawing on bills that have already been introduced, several provisions of the Transparency in Government Act of 2008 are the result of the collaborative work of the <a href="http://www.theopenhouseproject.com/">Open House Project</a>.
-
-    <p><a href="http://www.publicmarkup.org/bill/transparency-government-act-2008/">Transparency in Government Act of 2008</a></p>
-
-    <small>Special thanks to <a href="http://www.nudonation.com/2007/07/24/descarga-los-n-chrome-icons-v20/">NudoNation</a> for the Chrome Document Icon.</small>
+    
+    <p>PublicMarkup.org is a site the Sunlight Foundation created to crowdsource public review of proposed legislation. This project is not intended to be the ultimate technical solution to the challenge of drafting legislation online, but an experiment in online collaboration. By collecting legislation, summaries, resources and commentary in a single linkable location, PublicMarkup.org provides a simple, blog-like framework for soliciting feedback on this legislation.</p>
+    <p>In 2008, Sunlight launched PublicMarkup.org after preparing and drafting a comprehensive piece of government transparency legislation, <a href="http://publicmarkup.org/bill/transparency-government-act-2008/">The Transparency in Government Act</a>. Rather than immediately looking for legislators who might sponsor the bill, Sunlight posted the bill on this site, to allow anyone to comment on and suggest edits to the substance of the legislation. We then <a href="http://publicmarkup.org/bill/transparency-government-act-2008-revised/">revised the bill</a> based on public feedback. In 2010, Rep. Quigley introduced his own <a href="http://www.opencongress.org/bill/111-h4983/show">Transparency in Government Act</a>, incorporating many of the ideas we collaboratively drafted on PublicMarkup.org.</p>
+    <p>In the spirit of experimentation, when Congress was debating the Troubled Assets Relief Program in the fall of 2008, we posted several different drafts of related legislation to open up the public review process.</p>
+    <p>All of the code that powers PublicMarkup.org is available for anyone to use, and is available on <a href="https://github.com/sunlightlabs/publicmarkup">Github</a>, a repository of open source code.</p>
+    
+    <h3>Previously on Public Markup</h3>
+    
+    <ul class="legislation-list">
+        {% for leg in legislation %}
+            <li>
+                <a href="{{ leg.get_absolute_url }}">
+                    {{ leg }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    
 </div>
 {% endblock %}

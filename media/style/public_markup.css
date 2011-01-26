@@ -106,7 +106,7 @@ input { border: 1px solid #e3e2dd; padding: 3px 5px; color: #8e8987;}
 #currentBills { background-color: #EBE9E5; border: 1px solid #DBD9D4; text-align: left; padding: 20px;}
 #currentBills ul { float: left; width: 650px;}
 #currentBills li { font-size: 110%; margin-bottom: 15px; background: url(../images/icon_arrows.png) left 7px no-repeat; padding-left: 25px; margin-left: 30px;}
-#currentBills img { float: right; position: relative; right: -50px; bottom: -100px;}
+#currentBills img { float: right; position: absolute; right: 80px; bottom: 180px;}
 
 footer { margin-top: 80px; margin-bottom: 30px; background: url(../images/bg_gradient.jpg) center 11px no-repeat;}
 footer nav li { display: inline;}
@@ -291,3 +291,8 @@ button { text-indent: -9999em; display: block; cursor: pointer; border: none;}
 
 ul.errorlist { color: #933; font-weight: bold; }
 ul.errorlist li { text-align: left; }
+
+ul.legislation-list {
+	
+}
+ul.legislation-list li { list-style: disc outside; padding-left: 5px; margin-left: 20px; }

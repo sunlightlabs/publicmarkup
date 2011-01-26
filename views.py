@@ -5,11 +5,20 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from postmark import PMMail
+from publicmarkup.legislation.models import Legislation
 
 class ContactForm(forms.Form):
     name = forms.CharField()
     email = forms.EmailField()
     comment = forms.CharField(widget=forms.Textarea())
+
+# views
+
+def index(request):
+    legislation = Legislation.objects.order_by('-pk')[0]
+    return render_to_response("legislation/legislation_list.html",
+                              {'legislation': legislation},
+                              context_instance=RequestContext(request))
 
 def contact(request):
     if request.method == 'POST':
@@ -33,4 +42,8 @@ def contact(request):
 def signup(request):    
     messages.success(request, "Thanks for signing up and getting involved in the transparency effort!")
     return HttpResponseRedirect('/')
+
+def about(request):
+    legislation = Legislation.objects.order_by('-pk')[1:]
+    return render_to_response("about.html", {'legislation': legislation}, context_instance=RequestContext(request))
     
