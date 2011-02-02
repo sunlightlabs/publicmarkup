@@ -17,14 +17,26 @@
     <ul>
         {% for field in form.visible_fields %}
             {% if field.errors %}{{ field.errors }}{% endif %}
-            <li class="field_{{ field.name}}{% if field.errors %} error{% endif %}"{% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+            <li class="field_{{ field.name }}{% if field.errors %} error{% endif %}{% ifequal field.name "honeypot" %} hidden{% endifequal %}">
                 {{ field.label_tag }}
                 {{ field }}
             </li>
         {% endfor %}
-        {{ human_form.as_ul }}
+            <li id="testForm">
+                {{ human_form }}
+            </li>
+            <!--    
+            <li id="previewBtn" class="buttonli">
+                <button type="submit" name="preview" class="submit-preview">
+                    <span>Preview</span>
+                </button>
+            </li>
+            -->
+            <li id="postBtn" class="buttonli">
+                <button type="submit" name="post" class="submit-post">
+                    <span>Post</span>
+                </button>
+            </li>    
     </ul>
-    <p class="submit">
-        <input type="submit" name="post" class="submit-post" value="Post comment" />
-    </p>
+    <div class="clear"></div>
 </form>

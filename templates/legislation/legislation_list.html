@@ -1,37 +1,36 @@
-{% extends "index.html" %}
-
-{% load htmlhelper %}
+{% extends "base.html" %}
+{% load media %}
 
 {% block content %}
-<div id="doc4" class="yui-t7">
-{% include "header.html" %}
-	<div id="bd">
-		<div id="yui-g">
-			<div id="front_container">
-				<div id="front_container_top"></div>
-		
-					<div id="front_content">
-						<img src="http://media.publicmarkup.org/images/markup_front_define.gif" alt="A Markup is a collaborative writing session, where congressional committees or other groups hash out the specifics of legislation.">
-						<h1 class="front_intro">{% resource "index-lede" %}</h1>
-							<div id="front_copy" class="front_copy">{% autoescape off %}{% resource "index-content" %}{% endautoescape %}
-							</div>
-									
-						<div id="front_bill_container_newer"><img src="http://media.publicmarkup.org/images/front_bills_box_top.gif">
-							<div id="front_bills_box_new">
-							<h3>Legislation currently available for "Public Markup"</h3>
-							<ul>
-							{% for legislation in object_list %}
-							<li><a href="{% url legislation_detail legislation.slug %}" title="{{ legislation }}">{{ legislation }}</a></li>
-							{% endfor %}
-							</ul>
-							</div> <!-- end front_bill_box -->
-						</div> <!-- end front_bill_container -->
-					</div>
-				
-			</div>
-		</div> <!-- ends yui-g -->
-	
-</div> <!-- ends bd -->
-{% include "footer.html" %}
-</div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div id="featureDescription">
+        <div id="featureDetails">
+            <span id="featureTitle">Review and comment on proposed bills before they're introduced—or while they're pending—in Congress.</span>
+            <h3>Legislation currently available for "Public Markup": </h3>
+            <ul>
+                {% for legislation in object_list %}
+                <li><a href="{% url legislation_detail legislation.slug %}" title="{{ legislation }}">{{ legislation }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <img alt="papers" src={% media_url "images/img_papers.png" %} />
+        <div class="clear"></div>
+    </div>
+    <!--<div id="currentBills">
+        <h3>Legislation currently available for "Public Markup"</h3>
+        <ul>
+            {% for legislation in object_list %}
+            <li><a href="{% url legislation_detail legislation.slug %}" title="{{ legislation }}">{{ legislation }}</a></li>
+            {% endfor %}
+        </ul>
+        <img alt="papers" src={% media_url "images/img_papers.png" %} />
+        <div class="clear"></div>
+    </div>    -->
+    
 {% endblock %}

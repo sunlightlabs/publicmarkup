@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+
+{% block content %}
+    {% if not legislation.allow_comments %}
+        <span class="nocomment">The public comment period for this legislation has ended.</span>
+    {% endif %}
+    <h2 class="legislation-name">
+        <a href="{{ legislation.get_absolute_url }}">{{ legislation }}</a>
+    </h2>
+    {% block markupmeta %}{% endblock %}
+    <nav class="titles">
+        <ol>
+            {% for leg_title in legislation.titles.all %}
+                <li class="title">
+                    <a href="{% url title_detail legislation.slug,leg_title.number %}">
+                        <b>Title {{ leg_title.roman_number }}</b>
+                        {{ leg_title.name }}
+                    </a>
+                    {% if title and leg_title == title %}
+                        <ol>
+                            {% for section in title.sections.all %}
+                                <li class="section">
+                                    <a href="{% url section_detail legislation.slug leg_title.number section.number %}">
+                                        <strong>Sec. {{ section.number }}.</strong> {{ section.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+    </nav>
+    
+    <section class="markup">
+        
+        {% block markuphead %}{% endblock %}
+        
+        <div class="markup-details">
+            
+            {% block markupdetails %}{% endblock %}
+            
+            <div class="clear"></div>
+            
+        </div>
+        
+        {% block markupcontent %}{% endblock %}
+
+    </section>
+    <div class="clear"></div>
+{% endblock %}

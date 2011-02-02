@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Sunlight Foundation About Public Markup{% endblock %}
+
+{% block content %}
+<div id="ltColumn">
+    <h2>Contact Us</h2>
+    <form id="comment_box" action="/contact/" method="post">
+        {% csrf_token %}
+        <ul id="comment-form">
+            {{ form.as_ul }}
+            <li class="buttonli">
+		        <button class="sendbutton" type="submit">
+    				<span>Send</span>
+    			</button>
+		    </li>
+        </ul>    
+    </form>
+    <p class="tip">For press inquiries, contact Sunlight's Communications Director, Gabriela Schneider, at 202/742-1520 ext 236 or gschneider at sunlightfoundation dot com </p>
+</div>    
+{% endblock %}

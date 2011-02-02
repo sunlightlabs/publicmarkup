@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}About Public Markup{% endblock %}
+
+{% block content %}
+<div id="ltColumn">
+    
+    <h2>About Public Markup</h2>
+    
+    <p>PublicMarkup.org is a site the Sunlight Foundation created to crowdsource public review of proposed legislation. This project is not intended to be the ultimate technical solution to the challenge of drafting legislation online, but an experiment in online collaboration. By collecting legislation, summaries, resources and commentary in a single linkable location, PublicMarkup.org provides a simple, blog-like framework for soliciting feedback on this legislation.</p>
+    <p>In 2008, Sunlight launched PublicMarkup.org after preparing and drafting a comprehensive piece of government transparency legislation, <a href="http://publicmarkup.org/bill/transparency-government-act-2008/">The Transparency in Government Act</a>. Rather than immediately looking for legislators who might sponsor the bill, Sunlight posted the bill on this site, to allow anyone to comment on and suggest edits to the substance of the legislation. We then <a href="http://publicmarkup.org/bill/transparency-government-act-2008-revised/">revised the bill</a> based on public feedback. In 2010, Rep. Quigley introduced his own <a href="http://www.opencongress.org/bill/111-h4983/show">Transparency in Government Act</a>, incorporating many of the ideas we collaboratively drafted on PublicMarkup.org.</p>
+    <p>In the spirit of experimentation, when Congress was debating the Troubled Assets Relief Program in the fall of 2008, we posted several different drafts of related legislation to open up the public review process.</p>
+    <p>All of the code that powers PublicMarkup.org is available for anyone to use, and is available on <a href="https://github.com/sunlightlabs/publicmarkup">Github</a>, a repository of open source code.</p>
+    
+    <h3>Previously on Public Markup</h3>
+    
+    <ul class="legislation-list">
+        {% for leg in legislation %}
+            <li>
+                <a href="{{ leg.get_absolute_url }}">
+                    {{ leg }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    
+</div>
+{% endblock %}

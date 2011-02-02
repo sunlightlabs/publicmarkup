@@ -3,7 +3,7 @@ from publicmarkup.legislation.models import Legislation
 from publicmarkup.legislation.feeds import LegislationComments
 
 index_dict = {
-    'queryset': Legislation.objects.all().order_by("-id")
+    'queryset': Legislation.objects.filter(allow_comments=True).order_by("-id")
 }
 
 feeds = {

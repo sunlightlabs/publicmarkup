@@ -45,7 +45,11 @@ def legislation_detail(request, legislation_slug):
 
 def title_detail(request, legislation_slug, title_num):
     title = Title.objects.get(number=title_num, legislation__slug=legislation_slug)
-    return render_to_response("legislation/title_detail.html", locals(),
+    data = {
+        'title': title,
+        'legislation': title.legislation,
+    }
+    return render_to_response("legislation/title_detail.html", data,
                               context_instance=RequestContext(request))
     
 def section_detail(request, legislation_slug, title_num, section_num):
@@ -69,9 +73,11 @@ def section_detail(request, legislation_slug, title_num, section_num):
     except Section.DoesNotExist:
         previous_section = None
     data = {
-        "section": section,
-        "next_section": next_section,
-        "previous_section": previous_section,
+        'legislation': section.title.legislation,
+        'title': section.title,
+        'section': section,
+        'next_section': next_section,
+        'previous_section': previous_section,
         'human_form': human_form,
     }
     return render_to_response("legislation/section_detail.html", data,

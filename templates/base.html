@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load media %}
+<html version="HTML+RDFa 1.1" lang="en">
+<head>
+    
+    <meta charset="utf-8"> 
+    <meta name="description" content="">
+
+    <meta property="og:site_name" content="Public Markup">
+    {% block opengraph %}
+        <meta property="og:title" content="Public Markup">
+        <meta property="og:description" content="">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="http://publicmarkup.org/">
+    {% endblock %}
+    <meta property="fb:admins" content="7812952">
+    <meta property="fb:app_id" content="177057239001897">
+    
+    {% block meta %}{% endblock %}
+    
+    <link rel="shortcut icon" href="http://assets.sunlightfoundation.com/site/4.0/favicon.ico"> 
+    <link rel="apple-touch-icon" href="http://assets.sunlightfoundation.com/site/4.0/apple-touch-icon.png">
+    <link href='http://fonts.googleapis.com/css?family=Neuton' rel='stylesheet' type='text/css'>
+    {% css "style/production.css" %}
+    {% block css %}{% endblock %}
+    
+    {% block head %}{% endblock %}
+    
+    <title>{% block title %}Public Markup{% endblock %}</title>
+    
+</head>
+<body>
+    <header id="mainHeader">
+        <div id="signup">
+            <form action="http://local.publicequalsonline.com/page/signup/Public_Markup" method="post">
+                <label><strong>Like this project and want to see others like it?</strong> Sign up to get updates and become part of our <strong>open government community</strong> through the <strong><a href="http://www.sunlightfoundation.com">Sunlight Foundation</a></strong>.</label>
+                <input type="email" name="email" id="id_email" placeholder="enter your email address">
+                <input type="text" name="zip" id="id_zipcode" placeholder="and zip code" pattern="[0-9]{5}" maxlength="5">
+                <button id="signupBtn" type="submit">
+                    <span>Sign Up</span>
+                </button>
+            </form>    
+        </div>
+        <h1><a href="/">Public Markup</a></h1>
+        <div class="clear"></div> 
+        <span id="sunlightProduct">A Product of the <a id="foundationName">Sunlight Foundation</a></span>
+          
+    </header>
+    <div id="pageMain" role="main">
+        {% block content %}{% endblock %}
+        <div class="clear"></div>
+    </div>
+    <footer>
+        <nav>
+            <ul>
+                <li id="navAbout"><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>    
+            <div class="clear"></div>
+        </nav>
+        <div id="footerDetails">
+            <a id="foundationlogo" href="http://www.sunlightfoundation.com">Sunlight Foundation</a>
+            <p id="privacyPolicy">Founded in 2006, the Sunlight Foundation is a non-partisan non-profit that uses cutting-edge technology and ideas to make government transparent and accountable. Visit <a href="http://www.sunlightfoundation.com">SunlightFoundation.com</a> to learn more.</p>
+            <div class="clear"></div>
+        </div>
+    </footer>
+    
+    <script> 
+        var _gaq = [['_setAccount', 'UA-1265484-15'], ['_trackPageview']];
+        (function(d, t) {
+            var g = d.createElement(t),
+                s = d.getElementsByTagName(t)[0];
+            g.async = true;
+            g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g, s);
+        })(document, 'script');
+    </script>
+
+</body>
+</html>

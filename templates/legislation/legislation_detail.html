@@ -1,112 +1,89 @@
-{% extends "index.html" %}
+{% extends "legislation/base.html" %}
 {% load comments %}
 {% load markup %}
 
-{% block title %} - {{ legislation }}{% endblock %}
+{% block title %}{{ legislation }}{% endblock %}
+
 {% block head %}
-	<link rel="alternate" type="application/rss+xml" title="Comments on {{ legislation.name }}" href="http://publicmarkup.org/feed/comments/{{ legislation.slug }}/" />
+    <link rel="alternate" type="application/rss+xml" title="Comments on {{ legislation.name }}" href="http://publicmarkup.org/feed/comments/{{ legislation.slug }}/" />
 {% endblock %}
 
-{% block content %}
-
-	{% get_comment_count for legislation.legislation legislation.id as comment_count %}
-	{% get_comment_list for legislation.legislation legislation.id as comment_list %}
-	<div id="doc4" class="yui-t2">
-		{% include "header.html" %}
-		<div id="bd">
-			<div id="yui-main">
-				<div class="yui-b">
-					<div class="yui-g">
-					        {% if not legislation.allow_comments %}
-					        <div id="comments_off">The public comment period for this legislation has now ended.</div>
-					        {% endif %}
-							<div id="title_info_box">
-							<h2>{{ legislation }} <span class="leg_comment">(<a href="#comments_start" class="leg_comment">
-{{ comment_count }} bill comment{{ comment_count|pluralize }}</a> 
-{% with legislation.get_sections_comment_count as section_comment_count %}
- | <a href="#leg_start">{{ section_comment_count }} section comment{{ section_comment_count|pluralize }}</a>)
-
- </span><a href="http://publicmarkup.org/feed/comments/{{ legislation.slug }}/"><img src="http://media.publicmarkup.org/images/feed-icon-14x14.png" ALT="subscribe to the comments feed"></a>
-							{% endwith %}
-							
-							
-							 
-							</h2>
-							
-							<div id="legislation_justification">{% autoescape off %}{{ legislation.summary|markdown|urlizetrunc:"40" }}{% endautoescape %}</div>
-							
-						</div>
-					</div>
-					<div class="yui-g">
-						<div id="legislation_container">
-							<div id="legislation_content">	
-						
-								<div id="full_legislation">	
-								<a name="leg_start"></a>
-								{% if legislation.titles %}
-									<ol id="legislation_list">
-										{% for title in legislation.titles.all %}
-											<li id="legislation_list_title">
-												<h3><a href="{% url title_detail legislation.slug,title.number %}">{{ title }}</a></h3>
-												{% if title.sections %}
-													<ol id="legislation_list_section">
-														{% for section in title.sections.all %}
-														{% get_comment_count for legislation.section section.id as comment_count %}
-														<li>
-														<a href="{% url section_detail legislation.slug,title.number,section.number %}">{{ section }} 
-														{% if comment_count %} 
-														<span class="bolded">({{ comment_count }} comment{{ comment_count|pluralize }})</span>
-														{% endif %}
-														</a>
-														</li>
-					
-														{% endfor %}
-													</ol>
-												{% endif %}
-											</li>
-										{% endfor %}
-								</ol>
-								{% endif %}
-								</div>
-						
-							</div>
-							
-							
-							<!-- tmp comment styling -->
-							{% if comment_list %}
-						<a name="comments_start"></a>
-							<div id="leg_comments_box">
-								<h2>General Comments on {{ legislation }}</h2>
-								<ul>
-									{% for comment in comment_list %}
-									<li id="comment_{{ comment.id }}">
-										{% if forloop.last %}<div id="latest-comment"></div>{% endif %}
-										<p class="the_comment">{{ comment.comment|urlizetrunc:"40" }}</p>
-										<span class="comment_attrib">
-											<a href="{{ comment.get_content_object.get_absolute_url }}#comment_{{ comment.id }}" class="comment_attrib">posted by {{ comment.user_name }}, {{ comment.submit_date|date:"F j, Y" }}</a>
-										</span>
-									</li>
-									{% endfor %}
-								</ul>
-								<a id="last_comment"></a>
-							</div>		
-							{% endif %}
-							
-							{% if legislation.allow_comments %}
-							<div id="comment_box">
-								<h1>Comment on {{ legislation }}:</h1>
-								<p class="comment_disclaimer_leg">(You are commenting on this legislation as a whole. Comments on a specific section of the bill should be left within that section)</p>
-								{% render_comment_form for legislation.legislation legislation.id %}
-							</div>
-							{% endif %}
-						</div>
-					</div>
-				</div> <!-- end yui-b -->
-			</div> <!-- end yui-main -->	
-			<div class="yui-b">{% include "bill_left_nav.html" %}</div>
-		</div> <!-- end bd -->
-		{% include "footer.html" %}
-	</div> <!-- end yui-t2 -->
-
+{% block opengraph %}
+    <meta property="og:title" content="{{ legislation }}">
+    <meta property="og:description" content="{{ legislation.summary|truncatewords:50 }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://publicmarkup.org{{ legislation.get_absolute_url }}">
 {% endblock %}
 
+{% block markupmeta %}
+    {% get_comment_count for legislation.legislation legislation.id as comment_count %}
+    <p class="legislation-meta">
+        {% with legislation.get_sections_comment_count as section_comment_count %}
+            <a href="#comments" class="leg_comment">{{ comment_count }}</a> bill comment{{ comment_count|pluralize }},
+            <a href="#legislation-outline">{{ section_comment_count }}</a> section comment{{ section_comment_count|pluralize }}
+        {% endwith %}
+    </p>
+{% endblock %}
+
+{% block markupdetails %}
+    {% autoescape off %}
+        {{ legislation.summary|urlizetrunc:"40" }}
+    {% endautoescape %}
+{% endblock %}
+
+{% block markupcontent %}
+
+    {% if legislation.titles %}
+        <ol id="legislation-outline" class="legislation-outline">
+            {% for title in legislation.titles.all %}
+                <li id="legislation_list_title">
+                    <a href="{% url title_detail legislation.slug,title.number %}" class="title">{{ title }}</a>
+                    {% if title.sections %}
+                        <ol class="section-outline">
+                            {% for section in title.sections.all %}
+                                {% get_comment_count for legislation.section section.id as comment_count %}
+                                <li>
+                                    <a href="{% url section_detail legislation.slug,title.number,section.number %}">{{ section }}</a>
+                                    {% if comment_count %}
+                                        ({{ comment_count }} comment{{ comment_count|pluralize }})
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+    
+    {% get_comment_list for legislation.legislation legislation.id as comment_list %}
+    {% if comment_list %}
+        <div id="comments">
+            <h3>General Comments on {{ legislation }}</h3>
+            <section class="comments">
+                {% for comment in comment_list %}
+                    <article id="comment_{{ comment.id }}">
+                        <header{% if forloop.last %} id="latest-comment"{% endif %}>
+                            <a href="{{ comment.get_content_object.get_absolute_url }}#comment_{{ comment.id }}">
+                                {{ comment.user_name }} on {{ comment.submit_date|date:"F j, Y" }}
+                            </a>
+                        </header>
+                        <div class="comment">
+                            {{ comment.comment|markdown|urlizetrunc:"40" }}
+                        </div>
+                    </article>
+                {% endfor %}
+                <a name="last_comment"></a>
+            </section>
+        </div>
+    {% endif %}
+
+    {% if legislation.allow_comments %}
+        <div id="comment_box">
+            <h3 class="withTip">Comment on {{ legislation }}:</h3>
+            <p class="tip">(You are commenting on this legislation as a whole. Comments on a specific section of the bill should be left within that section)</p>
+            {% render_comment_form for legislation.legislation legislation.id %}
+        </div>
+    {% endif %}
+
+{% endblock %}
