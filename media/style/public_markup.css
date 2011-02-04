@@ -298,3 +298,5 @@ ul.legislation-list {
 	
 }
 ul.legislation-list li { list-style: disc outside; padding-left: 5px; margin-left: 20px; }
+
+iframe { display: block; margin: 1em 0; }
