@@ -160,6 +160,12 @@ nav.titles a {
 nav.titles a:hover { background-color: #EEE; }
 nav.titles a b { color: #000; display: block; }
 
+nav a.print {
+	background-color: #EBE9E5;
+    border-top: 2px solid #8c8885;
+	font-weight: bold;
+}
+
 /* main section container */
 
 section.markup {
