@@ -44,6 +44,6 @@ def signup(request):
     return HttpResponseRedirect('/')
 
 def about(request):
-    legislation = Legislation.objects.filter(allow_comments=False)
+    legislation = Legislation.objects.filter(allow_comments=False).order_by("-pk")
     return render_to_response("about.html", {'legislation': legislation}, context_instance=RequestContext(request))
     
