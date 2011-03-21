@@ -15,7 +15,7 @@ class ContactForm(forms.Form):
 # views
 
 def index(request):
-    legislation = Legislation.objects.order_by('-pk')[0]
+    legislation = Legislation.objects.filter(allow_comments=True)
     return render_to_response("legislation/legislation_list.html",
                               {'legislation': legislation},
                               context_instance=RequestContext(request))
@@ -44,6 +44,6 @@ def signup(request):
     return HttpResponseRedirect('/')
 
 def about(request):
-    legislation = Legislation.objects.order_by('-pk')[1:]
+    legislation = Legislation.objects.filter(allow_comments=False)
     return render_to_response("about.html", {'legislation': legislation}, context_instance=RequestContext(request))
     
