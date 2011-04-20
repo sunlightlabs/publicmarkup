@@ -10,6 +10,7 @@ class SectionInline(admin.TabularInline):
     
 class TitleAdmin(admin.ModelAdmin):
     inlines = [SectionInline,]
+    list_filter = ('legislation',)
     
 admin.site.register(Resource)
 admin.site.register(Legislation, LegislationAdmin)
