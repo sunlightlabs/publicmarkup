@@ -26,10 +26,16 @@
 {% endblock %}
 
 {% block markupdetails %}
+
+    <a href="https://twitter.com/share" class="twitter-share-button" data-text="{{ legislation }}" data-via="sunfoundation" data-url="http://publicmarkup.org/bill/{{ legislation.slug }}/">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
     <iframe src="http://www.facebook.com/plugins/like.php?href=http://publicmarkup.org{{ legislation.get_absolute_url }}&amp;layout=standard&amp;show_faces=false&amp;width=450&amp;action=like&amp;colorscheme=light&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe>
+
     {% autoescape off %}
         {{ legislation.summary|urlizetrunc:"40" }}
     {% endautoescape %}
+
 {% endblock %}
 
 {% block markupcontent %}
