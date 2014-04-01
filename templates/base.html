@@ -2,8 +2,8 @@
 {% load media %}
 <html version="HTML+RDFa 1.1" lang="en">
 <head>
-    
-    <meta charset="utf-8"> 
+
+    <meta charset="utf-8">
     <meta name="description" content="">
 
     <meta property="og:site_name" content="Public Markup">
@@ -14,19 +14,19 @@
         <meta property="og:url" content="http://publicmarkup.org/">
     {% endblock %}
     <meta property="fb:admins" content="7812952">
-    
+
     {% block meta %}{% endblock %}
-    
-    <link rel="shortcut icon" href="http://assets.sunlightfoundation.com/site/4.0/favicon.ico"> 
+
+    <link rel="shortcut icon" href="http://assets.sunlightfoundation.com/site/4.0/favicon.ico">
     <link rel="apple-touch-icon" href="http://assets.sunlightfoundation.com/site/4.0/apple-touch-icon.png">
     <link href='http://fonts.googleapis.com/css?family=Neuton' rel='stylesheet' type='text/css'>
     {% css "style/production.css" %}
     {% block css %}{% endblock %}
-    
+
     {% block head %}{% endblock %}
-    
+
     <title>{% block title %}Public Markup{% endblock %}</title>
-    
+
 </head>
 <body>
     <header id="mainHeader">
@@ -38,12 +38,12 @@
                 <button id="signupBtn" type="submit">
                     <span>Sign Up</span>
                 </button>
-            </form>    
+            </form>
         </div>
         <h1><a href="/">Public Markup</a></h1>
-        <div class="clear"></div> 
+        <div class="clear"></div>
         <span id="sunlightProduct">A Product of the <a id="foundationName">Sunlight Foundation</a></span>
-          
+
     </header>
     <div id="pageMain" role="main">
         {% block content %}{% endblock %}
@@ -54,7 +54,7 @@
             <ul>
                 <li id="navAbout"><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
-            </ul>    
+            </ul>
             <div class="clear"></div>
         </nav>
         <div id="footerDetails">
@@ -63,17 +63,24 @@
             <div class="clear"></div>
         </div>
     </footer>
-    
-    <script> 
-        var _gaq = [['_setAccount', 'UA-1265484-15'], ['_trackPageview']];
-        (function(d, t) {
-            var g = d.createElement(t),
-                s = d.getElementsByTagName(t)[0];
-            g.async = true;
-            g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g, s);
-        })(document, 'script');
-    </script>
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-1265484-15']);
+		_gaq.push(['_trackPageview']);
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	    ga('create', 'UA-48789618-1', 'publicmarkup.org');
+	    ga('send', 'pageview');
+	</script>
 
 </body>
 </html>
