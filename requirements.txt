@@ -1,9 +1,15 @@
-Django
-boto
--e git://github.com/sunlightlabs/django-mediasync.git#egg=mediasync
+boto==2.27.0
+Django>=1.6,<1.7
+django-humanity==0.2
+django-markup-deprecated==0.0.3
+dj-database-url==0.3.0
+python-postmark>=0.4,<0.5
+python-serpente==1.0.0
+raven>=4.2.0,<4.3.0
+South==0.8.4
+waitress>=0.8,<0.9
+whitenoise>=1.0,<1.1
+
+# eh?
 markdown
 textile
--e git://github.com/jcarbaugh/django-humanity.git#egg=humanity
--e git://github.com/jcarbaugh/python-serpente.git#egg=serpente
-python-postmark
-gunicorn

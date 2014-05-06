@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load media %}
+{% load staticfiles %}
 
 {% block content %}
     {% if messages %}
@@ -15,22 +15,22 @@
             <h3>Legislation currently available for "Public Markup": </h3>
             <ul>
                 {% for legislation in object_list %}
-                <li><a href="{% url legislation_detail legislation.slug %}" title="{{ legislation }}">{{ legislation }}</a></li>
+                <li><a href="{% url 'legislation_detail' legislation.slug %}" title="{{ legislation }}">{{ legislation }}</a></li>
                 {% endfor %}
             </ul>
         </div>
-        <img alt="papers" src={% media_url "images/img_papers.png" %} />
+        <img alt="papers" src="{% static "images/img_papers.png" %}">
         <div class="clear"></div>
     </div>
     <!--<div id="currentBills">
         <h3>Legislation currently available for "Public Markup"</h3>
         <ul>
             {% for legislation in object_list %}
-            <li><a href="{% url legislation_detail legislation.slug %}" title="{{ legislation }}">{{ legislation }}</a></li>
+            <li><a href="{% url 'legislation_detail' legislation.slug %}" title="{{ legislation }}">{{ legislation }}</a></li>
             {% endfor %}
         </ul>
-        <img alt="papers" src={% media_url "images/img_papers.png" %} />
+        <img alt="papers" src="{% static "images/img_papers.png" %}">
         <div class="clear"></div>
     </div>    -->
-    
+
 {% endblock %}

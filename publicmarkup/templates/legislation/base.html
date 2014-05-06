@@ -12,7 +12,7 @@
         <ol>
             {% for leg_title in legislation.titles.all %}
                 <li class="title">
-                    <a href="{% url title_detail legislation.slug,leg_title.number %}">
+                    <a href="{% url 'title_detail' legislation.slug leg_title.number %}">
                         <b>Title {{ leg_title.roman_number }}</b>
                         {{ leg_title.name }}
                     </a>
@@ -20,7 +20,7 @@
                         <ol>
                             {% for section in title.sections.all %}
                                 <li class="section">
-                                    <a href="{% url section_detail legislation.slug leg_title.number section.number %}">
+                                    <a href="{% url 'section_detail' legislation.slug leg_title.number section.number %}">
                                         <strong>Sec. {{ section.number }}.</strong> {{ section.name }}
                                     </a>
                                 </li>
@@ -32,19 +32,19 @@
         </ol>
         <a href="{{ legislation.get_absolute_url }}print/" class="print">Printable version of bill</a>
     </nav>
-    
+
     <section class="markup">
-        
+
         {% block markuphead %}{% endblock %}
-        
+
         <div class="markup-details">
-            
+
             {% block markupdetails %}{% endblock %}
-            
+
             <div class="clear"></div>
-            
+
         </div>
-        
+
         {% block markupcontent %}{% endblock %}
 
     </section>

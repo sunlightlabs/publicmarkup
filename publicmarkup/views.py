@@ -39,11 +39,10 @@ def contact(request):
         form = ContactForm(label_suffix="")
     return render_to_response("contact.html", {'form': form}, context_instance=RequestContext(request))
 
-def signup(request):    
+def signup(request):
     messages.success(request, "Thanks for signing up and getting involved in the transparency effort!")
     return HttpResponseRedirect('/')
 
 def about(request):
     legislation = Legislation.objects.filter(allow_comments=False).order_by("-pk")
     return render_to_response("about.html", {'legislation': legislation}, context_instance=RequestContext(request))
-    

@@ -44,13 +44,13 @@
         <ol id="legislation-outline" class="legislation-outline">
             {% for title in legislation.titles.all %}
                 <li id="legislation_list_title">
-                    <a href="{% url title_detail legislation.slug,title.number %}" class="title">{{ title }}</a>
+                    <a href="{% url 'title_detail' legislation.slug title.number %}" class="title">{{ title }}</a>
                     {% if title.sections %}
                         <ol class="section-outline">
                             {% for section in title.sections.all %}
                                 {% get_comment_count for legislation.section section.id as comment_count %}
                                 <li>
-                                    <a href="{% url section_detail legislation.slug,title.number,section.number %}">{{ section }}</a>
+                                    <a href="{% url 'section_detail' legislation.slug title.number section.number %}">{{ section }}</a>
                                     {% if comment_count %}
                                         ({{ comment_count }} comment{{ comment_count|pluralize }})
                                     {% endif %}
@@ -62,7 +62,7 @@
             {% endfor %}
         </ol>
     {% endif %}
-    
+
     {% get_comment_list for legislation.legislation legislation.id as comment_list %}
     {% if comment_list %}
         <div id="comments">
