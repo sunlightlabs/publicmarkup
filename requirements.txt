@@ -3,6 +3,7 @@ Django>=1.6,<1.7
 django-humanity==0.2
 django-markup-deprecated==0.0.3
 dj-database-url==0.3.0
+psycopg2==2.5.2
 python-postmark>=0.4,<0.5
 python-serpente==1.0.0
 raven>=4.2.0,<4.3.0
