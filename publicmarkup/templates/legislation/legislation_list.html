@@ -12,7 +12,15 @@
     <div id="featureDescription">
         <div id="featureDetails">
             <span id="featureTitle">Review and comment on proposed bills before they're introduced—or while they're pending—in Congress.</span>
+            {% comment %}
             <h3>Legislation currently available for "Public Markup": </h3>
+            <ul>
+                {% for legislation in object_list %}
+                <li><a href="{% url 'legislation_detail' legislation.slug %}" title="{{ legislation }}">{{ legislation }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endcomment %}
+            <h3>Previously on <i>Public Markup</i>:</h3>
             <ul>
                 {% for legislation in object_list %}
                 <li><a href="{% url 'legislation_detail' legislation.slug %}" title="{{ legislation }}">{{ legislation }}</a></li>
@@ -22,15 +30,5 @@
         <img alt="papers" src="{% static "images/img_papers.png" %}">
         <div class="clear"></div>
     </div>
-    <!--<div id="currentBills">
-        <h3>Legislation currently available for "Public Markup"</h3>
-        <ul>
-            {% for legislation in object_list %}
-            <li><a href="{% url 'legislation_detail' legislation.slug %}" title="{{ legislation }}">{{ legislation }}</a></li>
-            {% endfor %}
-        </ul>
-        <img alt="papers" src="{% static "images/img_papers.png" %}">
-        <div class="clear"></div>
-    </div>    -->
 
 {% endblock %}

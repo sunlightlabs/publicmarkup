@@ -11,7 +11,7 @@ from publicmarkup.legislation.models import Legislation, Title, Section
 class Index(ListView):
 
     def get_queryset(self):
-        return Legislation.objects.filter(allow_comments=True).order_by("-id")
+        return Legislation.objects.filter(allow_comments=False).order_by("-id")
 
 
 def bill(request):
