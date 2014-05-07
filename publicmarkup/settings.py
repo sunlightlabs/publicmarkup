@@ -18,7 +18,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'thisisnotsecure')
 DEBUG = os.environ.get('DEBUG') == 'True'
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['publicmarkup.org', 'publicmarkup-prod.herokuapp.com']
+ALLOWED_HOSTS = ['publicmarkup.org', 'www.publicmarkup.org', 'publicmarkup-prod.herokuapp.com']
 
 DATABASES = {'default': dj_database_url.config()}
 
