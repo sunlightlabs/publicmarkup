@@ -4,7 +4,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
 small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure,  footer, header, hgroup, 
+article, aside, canvas, details, figcaption, figure,  footer, header, hgroup,
 menu, nav, section, summary, time, mark, audio, video {
   margin:0;
   padding:0;
@@ -13,30 +13,30 @@ menu, nav, section, summary, time, mark, audio, video {
   font-size:100%;
   vertical-align:baseline;
   background:transparent;
-}                  
+}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
 ul { list-style: none; }
-blockquote, q { 
+blockquote, q {
 	background:url('../images/quotes.png') 12px top no-repeat ;
 	quotes: '»' '«' ;
 	margin-left:30px;
     padding-left:35px;
     border-left: 1px solid #E5E4DB;
 	color: #726B68; }
-	
-.pull_left, .pull_right { 
+
+.pull_left, .pull_right {
 	background:url('../images/quotes.png') 12px top no-repeat ;
 	margin-left:30px;
 	padding-left:35px;
 	margin-right: 65px;
 	color: #726B68;
-	font-family: Georgia, "Times New Roman", Times, serif; 
-	font-style: oblique; 
-	font-size: 130%; 
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: oblique;
+	font-size: 130%;
 	display: block;
 	line-height: 2;
 	}
-	
+
 blockquote:before, blockquote:after,
 q:before, q:after { content:''; content:none; }
 
@@ -49,7 +49,7 @@ table { border-collapse:collapse; border-spacing:0; }
 hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 0; padding:0; }
 input, select { vertical-align:middle; }
 
-body { color: #494442; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; line-height: 22px; font-size: 13px; background-color: #f5f5ee;} 
+body { color: #494442; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; line-height: 22px; font-size: 13px; background-color: #f5f5ee;}
 select, input, textarea, button { font: 99% sans-serif; }
 button.disabled { opacity: 0.3; filter: alpha(opacity=30); -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)"; }
 pre, code, kbd, samp { font-family: monospace, sans-serif; }
@@ -62,15 +62,15 @@ a:hover { color: #5F728C; }
 .clear { clear: both; }
 
 html { font-size: 80%; margin: 0; padding: 0; }
-nav ul, nav li { margin: 0; } 
+nav ul, nav li { margin: 0; }
 small { font-size: 85%; }
 strong, th, b { font-weight: bold; }
-td, td img { vertical-align: top; } 
+td, td img { vertical-align: top; }
 sub { vertical-align: sub; font-size: smaller; line-height:1px;}
 sup { vertical-align: super; font-size: smaller; }
 pre {  padding: 15px;  white-space: pre;  white-space: pre-wrap;  white-space: pre-line;  word-wrap: break-word; }
-textarea { overflow: auto; } 
-.ie6 legend, .ie7 legend { margin-left: -7px; } 
+textarea { overflow: auto; }
+.ie6 legend, .ie7 legend { margin-left: -7px; }
 input[type="radio"] { vertical-align: text-bottom; }
 input[type="checkbox"] { vertical-align: bottom; }
 .ie7 input[type="checkbox"] { vertical-align: baseline; }
@@ -78,11 +78,11 @@ input[type="checkbox"] { vertical-align: bottom; }
 label, input[type=button], input[type=submit] { cursor: pointer; }
 button, input, select, textarea { margin: 0; }
 input:invalid, textarea:invalid { border-radius: 1px;  -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red;  box-shadow: 0px 0px 5px red; }
-.no-boxshadow input:invalid, 
+.no-boxshadow input:invalid,
 .no-boxshadow textarea:invalid { background-color: #f0dddd; }
 
 header#mainHeader, footer, #pageMain { margin: 0 auto; width: 940px; padding: 0 10px; display: block;}
-header#mainHeader { background: url(../images/bg_header.jpg) center bottom no-repeat; height: 150px; margin-bottom: 50px; margin-top: 15px;}
+header#mainHeader { background: url(../images/bg_header.jpg) center bottom no-repeat; height: 142px; margin-bottom: 50px;   }
 
 .tip { color: #797171; font-family: Georgia, "Times New Roman", Times, serif; font-style: oblique; font-size: 95%; margin-bottom: 20px; line-height: 18px;}
 
@@ -97,7 +97,7 @@ h1 a { text-indent: -9999em; display: block; width: 265px; height: 79px; backgro
 #signup label { font-size: 96%; line-height: 20px; margin-bottom: 10px; display: block; text-align: right; }
 #id_zipcode { width: 100px;}
 
-input { border: 1px solid #e3e2dd; padding: 3px 5px; color: #8e8987;} 
+input { border: 1px solid #e3e2dd; padding: 3px 5px; color: #8e8987;}
 
 #featureTitle { font-size: 260%; line-height: 45px; font-family: Georgia, "Times New Roman", Times, serif;  font-style: oblique; color: #4c4242; display: block; margin-bottom: 25px; background: url(../images/line.jpg) center bottom repeat-x; padding-bottom: 30px; margin-bottom: 30px;}
 #featureAction { color: #797171; font-size: 110%; margin-top: 10px; display: block; font-family: Georgia, "Times New Roman", Times, serif; font-style: oblique;}
@@ -135,7 +135,7 @@ p.legislation-meta { margin: 5px 0 30px; font-family: Georgia, "Times New Roman"
 
 /*
  * main title navigation
- */ 
+ */
 
 nav.titles {
     border-bottom: 2px solid #8c8885;
@@ -301,10 +301,19 @@ ul.errorlist { color: #933; font-weight: bold; }
 ul.errorlist li { text-align: left; }
 
 ul.legislation-list {
-	
+
 }
 ul.legislation-list li { list-style: disc outside; padding-left: 5px; margin-left: 20px; }
 
 iframe { display: block; margin: 1em 0; }
 
 .mark { color: #5F8E9E; }
+
+#bb_panel { text-align: left; }
+.branding-bar {
+    background-color: #494442 !important;
+    padding: 0 20px;
+}
+.branding-bar_productof { color: #EBE9E5 !important; }
+.branding-bar_links a { color: #FCD250 !important; }
+.branding-bar_links a span { color: #EBE9E5 !important; }

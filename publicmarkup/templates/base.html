@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-<html version="HTML+RDFa 1.1" lang="en">
+<html lang="en" class="bb_wrapper">
 <head>
 
     <meta charset="utf-8">
@@ -22,6 +22,14 @@
     <link href='http://fonts.googleapis.com/css?family=Neuton' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static "yui/reset-fonts-grids.css" %}">
     <link rel="stylesheet" href="{% static "style/public_markup.css" %}">
+    <link rel="stylesheet" href="https://sunlight-cdn.s3.amazonaws.com/brandingbar/0.3/css/brandingbar.css">
+
+    <link rel="stylesheet" href="https://sunlight-cdn.s3.amazonaws.com/sf-icons/0.2/css/sf-icons.css">
+    <!--[if IE 8]>
+    <script src="https://sunlight-cdn.s3.amazonaws.com/sf-icons/0.2/js/sf-icons.js"></script>
+	<![endif]-->
+
+
     {% block css %}{% endblock %}
 
     {% block head %}{% endblock %}
@@ -30,20 +38,10 @@
 
 </head>
 <body>
+	<div class="branding-bar sflogo-light" data-bb-brandingbar="true" data-bb-property-id="publicmarkup"></div>
+
     <header id="mainHeader">
-        <div id="signup">
-            <form action="http://local.publicequalsonline.com/page/signup/Public_Markup" method="post">
-                <label><strong>Like this project and want to see others like it?</strong> Sign up to get updates and become part of our <strong>open government community</strong> through the <strong><a href="http://www.sunlightfoundation.com">Sunlight Foundation</a></strong>.</label>
-                <input type="email" name="email" id="id_email" placeholder="enter your email address">
-                <input type="text" name="zip" id="id_zipcode" placeholder="and zip code" pattern="[0-9]{5}" maxlength="5">
-                <button id="signupBtn" type="submit">
-                    <span>Sign Up</span>
-                </button>
-            </form>
-        </div>
         <h1><a href="/">Public Markup</a></h1>
-        <div class="clear"></div>
-        <span id="sunlightProduct">A Product of the <a id="foundationName">Sunlight Foundation</a></span>
 
     </header>
     <div id="pageMain" role="main">
@@ -65,22 +63,16 @@
         </div>
     </footer>
 
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-1265484-15']);
-		_gaq.push(['_trackPageview']);
-		(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	    ga('create', 'UA-48789618-1', 'publicmarkup.org');
-	    ga('send', 'pageview');
+    <script src="https://sunlight-cdn.s3.amazonaws.com/brandingbar/0.3/js/brandingbar.min.js.gz"></script>
+    <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-1265484-15', 'publicmarkup.org');
+	  ga('send', 'pageview');
+	  ga('create', 'UA-48789618-1', 'publicmarkup.org', {'name': 'global'});
+	  ga('global.send', 'pageview');
 	</script>
 
 </body>
